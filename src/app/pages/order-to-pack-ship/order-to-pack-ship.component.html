@@ -1,0 +1,268 @@
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+          <div class="card-body">
+            <h2>Customer </h2>
+                    <h4>
+                      {{quotationNTB?.FirstName}}<br />
+                      {{quotationNTB?.mobile}}<br>
+                    </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <div class="card">
+          <div class="card-body">
+            <h2>Order Detail </h2>
+                    <h4>
+                      Order Id: {{id}}<br>
+                     {{quotationNTB?.created| date : 'dd-MM-yyyy'}}
+                    </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card-body ">
+        <div class="row gx-9 gy-6">
+          <!--begin::Col-->
+          <div class="col-xl-6">
+            <!--begin::Address-->
+            <div class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6">
+              <!--begin::Details-->
+              <div class="d-flex flex-column py-2">
+                <div class="d-flex align-items-center fs-5 fw-bolder mb-5">Shipping Address
+                  <!-- <span class="badge badge-light-success fs-7 ms-2">Primary</span> -->
+                </div>
+                <div class="fs-6 fw-bold text-gray-600">
+                  <div style=" padding-inline: 10px 10px 10px 10px" style="display: inline-block;  padding-inline: 10px">
+      
+                  </div>
+                  <br />
+      
+      
+                  {{quotationNTB?.first_name}} {{quotationNTB?.second_name}}<br />
+                  {{quotationNTB?.company_name}}<br />
+                  {{quotationNTB?.address1}}<br />
+                  {{quotationNTB?.address2}}<br />
+                  {{quotationNTB?.city}} {{quotationNTB?.pincode}}<br />
+                  {{quotationNTB?.state}} {{quotationNTB?.country}}<br />
+                  {{quotationNTB?.mobile}}<br />
+      
+                </div>
+              </div>
+              <!--end::Details-->
+              <!--begin::Actions-->
+              <!-- <div class="d-flex align-items-center py-2">
+                  <a class="btn btn-sm btn-primary cursor-pointer">Edit</a>
+      
+      
+                </div> -->
+              <!--end::Actions-->
+            </div>
+            <!--end::Address-->
+          </div>
+          <!--end::Col-->
+          <!--begin::Col-->
+          <div class="col-xl-6">
+            <!--begin::Address-->
+            <div class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6">
+              <!--begin::Details-->
+              <div class="d-flex flex-column py-2">
+                <div class="d-flex align-items-center fs-5 fw-bolder mb-3">Billing Address</div>
+                <div class="fs-6 fw-bold text-gray-600">
+                  <div style=" padding-inline: 10px 10px 10px 10px" style="display: inline-block; padding-inline: 10px">
+                  </div>
+                  <br />
+                  {{quotationNTB?.first_name}} {{quotationNTB?.second_name}}<br />
+                  {{bAddress?.company_name}}<br />
+                  {{bAddress?.address1}}<br />
+                  {{bAddress?.address2}}<br />
+                  {{bAddress?.city}} {{bAddress?.pincode}}<br />
+                  {{bAddress?.state}} {{bAddress?.country}}<br />
+                  {{bAddress?.mobile}}<br />
+                </div>
+              </div>
+              <!--end::Details-->
+              <!--begin::Actions-->
+              <!-- <div class="d-flex align-items-center py-2">
+      
+                  <a class="btn btn-sm btn-primary cursor-pointer" data-bs-toggle="modal"
+                    data-bs-target="#kt_modal_new_address">Edit</a>
+      
+                </div> -->
+              <!--end::Actions-->
+            </div>
+            <!--end::Address-->
+          </div>
+          <!--end::Col-->
+        </div>
+      
+      
+        <div align="center">
+      
+        </div>
+      </div>
+
+
+
+
+      <div class="card mb-5 mb-xl-8 p-5">
+        <div class="card-body py-3">
+          <!--begin::Table container-->
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <thead>
+                      <tr class="fw-bolder text-muted">
+                        <th scope="col">Packed </th>
+
+                          <th scope="col">Product</th>
+                          <!-- <th scope="col">tax rate</th> -->
+                          <th scope="col">Ordered</th>
+                          <th scope="col">Available</th>
+                          <th scope="col">Shipped</th>
+                          <th style="width:15%" scope="col">Packed</th>
+                          <th scope="col">Balance</th>
+                          <!-- <ng-container *ngIf="isIgst != true">
+                          <th scope="col">CGST</th>
+                          <th scope="col">SGST</th>
+                          </ng-container>
+                          <ng-container *ngIf="isIgst == true">
+                          <th scope="col">IGST</th>
+                          </ng-container> -->
+                          <!-- <th scope="col">Update/Delete</th> -->
+                      </tr>
+                  </thead>
+  
+                  <tbody>
+                      <tr *ngFor="let q of quotationDetail; let i=index">
+                        <td>
+                          <input class="form-check-input" type="checkbox" [(ngModel)]="q.checkValue" (ngModelChange)="check(i)">
+                      </td>
+                          <td class="product-name">
+                              <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{q.title}}</a>
+                              <span class="text-muted fw-bold text-muted d-block fs-7">SKU: UD</span>
+                          </td>
+                          <td>
+                            <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{q.quantity}}</a>
+                          </td>
+                          <!-- <td class="product-name">
+                              <a>{{q.tax_rate}}</a>
+                          </td> -->
+                          <td class="product-subtotal">
+                              <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                  {{q.Quantity}}</a>
+                          </td>
+                          <td class="product-price">
+                              <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                  {{q.shipped_quantity}}</a>
+                          </td>
+                          <!-- <input min="0" max={{q.maxValue}} type="number" [(ngModel)]="q.pack_quantity" (ngModelChange)="packedQuantityChange(i)" class="form-control col-xs-1"  > -->
+
+                          <td>
+                            <input value="q.pack_quantity" type="number" class="form-control" maxlength="6" size="6" [(ngModel)]="q.pack_quantity"  (ngModelChange)="packedQuantityChange(i)">
+                        </td>
+
+                          <td class="product-price">
+                              <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                  {{q.BQ}}</a>
+                          </td>
+  
+                          <!-- <ng-container *ngIf="isIgst != true">
+                          <td class="product-price">
+                              <span class="unit-amount">{{q.cgst}}</span>
+                          </td>
+                          <td class="product-price">
+                              <span class="unit-amount">{{q.sgst}}</span>
+                          </td>
+                          </ng-container>
+                          <ng-container *ngIf="isIgst == true">
+  
+                          <td class="product-price">
+                              <span class="unit-amount">{{q.igst}}</span>
+                          </td>
+                          </ng-container> -->
+                      </tr>
+                  </tbody>
+  
+              </table>
+          </div>
+      </div>
+  </div>
+
+
+
+
+  <div class="col-sm-6 p-5 float-right">
+    <div class="card ">
+      <div class="card-body">
+        <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1"> Sales Summary</span>
+        </h3>
+
+        <table class="table table-bordered">
+          <tr>
+            <th>Sales Person:</th>
+            <td>#</td>
+            <td>XXXXXX</td>
+          </tr>
+          <tr>
+            <th>Region :</th>
+            <td>#</td>
+            <td>XXXXXX</td>
+          </tr>
+          <tr>
+            <th>Affiliate:</th>
+            <td>#</td>
+            <td>XXXXXX</td>
+          </tr>
+          <tr>
+            <th>Affiliate %:</th>
+            <td>#</td>
+            <td>XXXXXX</td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<div class="cart-area ptb-100">
+    <div class="container">
+        <div class="cart-totals">
+            <!-- <p>Subtotal: {{quotationNTB?.sub_total}}</p> -->
+            <!-- <ng-container *ngIf="isIgst != true">
+            <p>Total CGST: {{quotationNTB?.total_cgst}}</p>
+            <p>Total SGST: {{quotationNTB?.total_sgst}}</p>
+            </ng-container>
+            <ng-container *ngIf="isIgst == true">
+            <p>Total IGST: {{quotationNTB?.total_igst}}</p>
+            </ng-container> -->
+            <!-- <h3>Total(Including tax) : <b>{{quotationNTB?.total | currency:'INR'}}</b></h3> -->
+            <h3>Total Quantity for packing : <b>{{totalShipQuantity}}</b></h3>
+
+            <ul>
+                <!-- <li>Total <span>{{quotationDetail.total}}</span></li> -->
+            </ul>
+            <!-- <a routerLink="/checkout" class="default-btn"><i class='bx bx-shopping-bag icon-arrow before'></i><span class="label">Proceed to Checkout</span><i class="bx bx-shopping-bag icon-arrow after"></i></a> -->
+        </div>
+        <!-- <button routerLink="/backOrderEdit/{{id}}" (click)="edit()">Edit</button><br><br> -->
+        <!-- <button (click)="addToQuote()">Create Order</button><br><br> -->
+        <div class="row">
+          <div class="col-xl-1">
+            <button (click)="ship()" class="btn btn-sm btn-primary cursor-pointer">Ship</button>
+          </div>
+          <div class="col-xl-1">
+            <a href="ordersToPack/{{id}}" class="btn btn-sm btn-primary cursor-pointer">Back</a>
+          </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,79 @@
+<h2>Template Detail</h2>
+
+
+
+<div class="card">
+    <div class="card-body ptb-100">
+        <div class="container ">
+            <h3><b>{{templateNDT?.templateName}}</b></h3>
+            <h3>{{templateNDT?.templateDesc}}</h3>
+            <br>
+
+
+
+
+            <div class="cart-table table-responsive">
+                <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+                    <thead>
+                        <tr class="fw-bolder text-muted">
+                            <th scope="col">Name</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Line Total</th>
+                            <!-- <th scope="col">Update/Delete</th> -->
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let q of templateDetails; let i=index">
+                            <td class="product-name">
+                                <a class="text-dark fw-bolder text-hover-primary fs-6"
+                                    routerLink="/single-products">{{q.title}}</a>
+                            </td>
+                            <td class="product-price">
+                                <a class="text-dark fw-bolder text-hover-primary fs-6">{{q.price | currency:'INR'}}</a>
+                            </td>
+                            <td class="product-quantity">
+                                <form>
+                                    <div class="input-counter">
+                                        <!-- <input type="number" id="number" [value]="q.numInQuote" readonly [max]="q.product.quantity" /> -->
+                                        <p>{{q.quantity}}</p>
+                                    </div>
+                                </form>
+                            </td>
+                            <td class="product-subtotal">
+                                <a class="text-dark fw-bolder text-hover-primary fs-6">{{CalculateLineTotal(i) |
+                                    currency:'INR'}}</a>
+                            </td>
+                            <!-- <td>
+                                <i class='bx bx-edit'></i>
+                                <i class='bx bx-trash'></i>
+                            </td> -->
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+            <br>
+            <div class="cart-totals">
+                <h3>Quote Total : <b>{{templateNDT?.total | currency:'INR'}}</b></h3>
+                <ul>
+                    <!-- <li>Total <span>{{templateDetails.total}}</span></li> -->
+                </ul>
+                <!-- <a routerLink="/checkout" class="default-btn"><i class='bx bx-shopping-bag icon-arrow before'></i><span class="label">Proceed to Checkout</span><i class="bx bx-shopping-bag icon-arrow after"></i></a> -->
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xl-1">
+                    <a class="btn btn-sm btn-primary cursor-pointer"
+                        routerLink="/quotationTemplateList/quotationTemplateView/quotationTemplateEdit/{{id}}"(click)="edit()">Edit</a><br><br>
+                </div>
+                <div class="col-xl-3">
+                    <a class="btn btn-sm btn-primary cursor-pointer" (click)="addToQuote()">Add To Quote</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

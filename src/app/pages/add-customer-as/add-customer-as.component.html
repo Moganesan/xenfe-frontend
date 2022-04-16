@@ -1,0 +1,81 @@
+<div class="card">
+
+    <div class="card-body m-5 rounded bg-light">
+
+        <h2>Login details</h2>
+        <div class="form-floating mb-7">
+            <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.LISalution"
+                placeholder="Salution" />
+            <label for="floatingInput">Salution</label>
+        </div>
+
+
+        <div class="form-floating mb-7">
+            <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.LIFirstName"
+                placeholder="First Name " />
+            <label for="floatingInput">First Name</label>
+        </div>
+
+
+        <div class="form-floating mb-7">
+            <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.LISecondName"
+                placeholder="Second Name" />
+            <label for="floatingInput">Second Name</label>
+        </div>
+
+
+        <div class="form-floating mb-7">
+            <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.LIMobile"
+                placeholder="Mobile" />
+            <label for="floatingInput">Mobile</label>
+        </div>
+
+
+        <div class="form-floating mb-7">
+            <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.LIPassword"
+                placeholder="Password" />
+            <label for="floatingInput">Password</label>
+        </div>
+
+
+        <!-- <h2>Shipping Address</h2>
+<br><input  [(ngModel)]="data.Branch" placeholder="Branch">
+<br><input  [(ngModel)]="data.Salution" placeholder="Salution">
+<br><input  [(ngModel)]="data.FirstName" placeholder="First Name ">
+<br><input  [(ngModel)]="data.SecondName" placeholder="Second Name">
+<br><input  [(ngModel)]="data.CompanyName" placeholder="Company Name">
+<br><input  [(ngModel)]="data.GSTIN" placeholder="GSTIN">
+<br><input  [(ngModel)]="data.AddressLine1" placeholder="Address Line 1">
+<br><input  [(ngModel)]="data.AddressLine2" placeholder="Address Line 2">
+<br><input  [(ngModel)]="data.City" placeholder="City">
+<br><input  [(ngModel)]="data.Pincode" placeholder="Pincode">
+<br> -->
+        <!-- <input  [(ngModel)]="data.State" placeholder="State"> -->
+        <!-- <p>State</p>
+<select #mySelect1 (change)='onStateSelect(mySelect1.value)'>
+    <option
+    value="{{s.id_state}}"
+    *ngFor=" let s of states"
+    [selected]="s.id_state == adminDetail?.state_id"
+    >{{s.name}}</option>
+</select>
+<br> -->
+        <!-- <input  [(ngModel)]="country_id" placeholder="Country"> -->
+        <!-- <p>Country</p>
+<select #mySelect (change)='onSelect(mySelect.value)'>
+    <option
+    value="{{v.id_country}}"
+    *ngFor=" let v of countries"
+    [selected]="v.id_country == adminDetail?.country_id"
+    >{{v.name}}</option>
+</select>
+<br><input  [(ngModel)]="data.Landline" placeholder="Landline">
+<br><input  [(ngModel)]="data.Mobile" placeholder="Mobile">
+<br><input  [(ngModel)]="data.WhatsApp" placeholder="WhatsApp"> -->
+
+        <br><br>
+
+        <a class="btn btn-sm btn-primary cursor-pointer" (click)='add()'>Add</a>
+
+    </div>
+</div>

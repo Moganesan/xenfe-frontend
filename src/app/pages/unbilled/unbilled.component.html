@@ -1,0 +1,24 @@
+
+
+  <div class="card mb-5 mb-xl-8 p-5">
+    <div class="card-body py-3">
+      <div class="table-responsive">
+<table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+  <thead>
+    <tr class="fw-bolder text-muted">
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Branch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor=" let c of cust" >
+     <td> <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" href="/unbilled/{{c.shipping_id}}">{{c.first_name}} {{c.second_name}}</a></td>
+     <td> <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" href="/unbilled/{{c.shipping_id}}">{{c.mobile}}</a></td>
+     <td> <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" href="/unbilled/{{c.shipping_id}}">{{c.branch}}</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>

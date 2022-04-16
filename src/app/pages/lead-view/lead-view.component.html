@@ -1,0 +1,90 @@
+<div class="card">
+    <div class="card-body">
+      <h2>View Lead</h2>
+      <div class="row">
+        <div class="container fs-6 fw-bold text-gray-600 col">
+          Customer:  {{leadDetail?.first_name}}
+            {{leadDetail?.second_name}}<br>
+          Company: {{leadDetail?.company}} - {{leadDetail?.branch}}<br>
+          Mobile: {{leadDetail?.mobile}}<br>
+          GSTIN: {{leadDetail?.gstin}}<br>
+        </div><div class="container fs-6 fw-bold text-gray-600 col">
+          WhatsApp: {{leadDetail?.whatsapp}}<br>
+          Email: {{leadDetail?.email}} <br>
+          Landline: {{leadDetail?.landline}} <br>
+    </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="card-body ">
+    <div class="row gx-9 gy-6">
+      <!--begin::Col-->
+      <div class="col-xl-6">
+        <!--begin::Address-->
+        <div class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6">
+
+
+
+
+  <div class="d-flex flex-column py-2">
+    <div class="d-flex align-items-center fs-5 fw-bolder mb-5">Address
+      <!-- <span class="badge badge-light-success fs-7 ms-2">Primary</span> -->
+    </div>
+    <div class="fs-6 fw-bold text-gray-600">
+      <!-- <div style=" padding-inline: 10px 10px 10px 10px" style="display: inline-block;  padding-inline: 10px">
+
+      </div> -->
+
+
+      {{leadDetail?.address1}}<br />
+      {{leadDetail?.address2}}<br />
+      {{leadDetail?.city}} {{leadDetail?.pincode}}<br />
+       {{leadDetail?.state}} {{leadDetail?.country}}<br /> 
+      {{leadDetail?.mobile}}<br />
+
+    </div>
+  </div>
+
+
+</div></div></div></div>
+
+
+  <div class="card mb-5">
+    <div class="card-body">
+      <h2>Enquiry</h2>
+      <div class="container fs-6 fw-bold text-gray-600">
+        {{leadDetail?.enquiry}}
+      </div></div></div>
+
+      <div class="card mb-5">
+        <div class="card-body">
+          <h2>Requirement</h2>
+
+          <ng-container *ngIf="editCheck != true">
+
+          <a class="btn btn-sm btn-primary cursor-pointer float-right" style="float:right" (click)="edit()" >Edit</a>
+
+          <div class="container fs-6 fw-bold text-gray-600">
+            {{leadDetail?.requirement}}
+          </div>
+          </ng-container>
+
+          <ng-container *ngIf="editCheck == true">
+          <div class="form-group fs-6 fw-bold text-gray-600">
+            <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="requirement" rows="3"></textarea>
+          </div>
+          <div class="card-body ">
+
+          <a class="btn btn-sm btn-primary cursor-pointer" (click)="save()">Save</a>
+          </div>
+
+          </ng-container>
+        
+        
+        </div></div>
+
+

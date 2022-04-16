@@ -1,0 +1,27 @@
+
+
+<input placeholder="Tax Name" [(ngModel)]="name"><br><br>
+<input placeholder="Tax value" [(ngModel)]="value"><br><br>
+
+<button (click)="save()">Save</button><br><br>
+<button>Cancel</button><br><br>
+
+<h3>List of Taxes</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Tax Name....</th>
+            <th>Tax percentage</th>
+        </tr>
+    </thead>
+    <tbody *ngFor='let q of allTaxes'>
+        <tr>
+            <td>
+                {{q.tax_name}}
+            </td>
+            <td>
+                {{q.tax_rate}}
+            </td>
+        </tr>
+    </tbody>
+</table>

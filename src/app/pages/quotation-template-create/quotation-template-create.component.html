@@ -1,0 +1,137 @@
+<div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 > Quote Template Name</h2>
+                <div>
+                    <input class="form-control" type="text" [(ngModel)]="templeteName">
+                    <br>
+                </div>
+                <br>
+                <h3 class="card-label fw-bolder fs-3 mb-1"> Quote Template Description</h3>
+                <div>
+                    <textarea class="form-control" [(ngModel)]="templeteDesc"></textarea>
+                    <br>
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="card-body">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bolder fs-3 mb-1"> Product Search</span>
+            <!-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 orders</span> -->
+          </h3>
+          <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()"
+            placeholder="Enter product to search" autocomplete='off'>
+          <ng-container *ngIf="product != undefined">
+            <div>
+              <select class="form-select form-select-solid col-xs-2" data-kt-select2="true"
+                data-placeholder="Select option" data-allow-clear="true" [(ngModel)]="productSelection" #mySelect
+                (change)='onSelect(mySelect.value)'>
+                <option selected value> -- select a product -- </option>
+                <option *ngFor=" let p of product" value="{{p.id}}">
+                  <p>{{p.name}}</p>
+                </option>
+              </select>
+            </div>
+            <p>Quantity</p>
+            <input class="form-control mb-2" [(ngModel)]="quantity" type="number">
+            <!-- <input type="text" name="price" class="form-control mb-2" placeholder="Product price" value="" /> -->
+
+            <button class="btn btn-sm btn-primary cursor-pointer" (click)="addFunction()">Add</button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- <br><br><br>
+<h3>Search Field</h3>
+<input type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" placeholder="Enter name to search"
+    autocomplete='off'>
+
+
+
+<ng-container *ngIf="product != undefined">
+    <p>Display Field</p>
+    <div>
+        <select [(ngModel)]="productSelection" #mySelect (change)='onSelect(mySelect.value)'>
+            <option selected value> -- select a product -- </option>
+            <option *ngFor=" let p of product" value="{{p.id}}">
+                <p>{{p.name}}</p>
+            </option>
+        </select>
+    </div>
+    <p>Quantity</p>
+    <input [(ngModel)]="quantity" type="number">
+    <p>Add Button</p>
+    <button (click)="addFunction()">Add</button>
+</ng-container> -->
+
+<!-- Ends Here -->
+
+<div class="card mb-5 mb-xl-8 p-5">
+    <div class="card-body py-3">
+        <div class="table-responsive">
+            <table  class="table table-bordered">
+                <thead>
+                    <tr class="fw-bolder text-muted">
+                        <th scope="col">Name</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Remove</th>
+                    </tr>
+                </thead>
+                <ng-container *ngIf="quoteTempData.data[0].numInQuote !== 0">
+
+                    <tbody>
+                        <tr *ngFor="let q of quoteTempData.data; let i=index">
+                            <td class="product-name">
+                                <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{q.product.name}}</a>
+                            </td>
+                            <td class="product-price">
+                                <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" >{{q.product.price | currency:'INR'}}</a>
+                            </td>
+                            <td class="product-quantity">
+                                <form>
+                                    <div class="input-counter">
+                                        <!-- <input type="number" id="number" [value]="q.numInQuote" readonly [max]="q.product.quantity" /> -->
+                                        <!-- <p>{{q.numInQuote}}</p> -->
+                                        <input min="0" required id="quantity" type="number" [(ngModel)]="q.numInQuote"
+                                            (input)="quoteService.CalculateTempTotal()" name="quantity">
+
+                                    </div>
+                                </form>
+                            </td>
+                            <td class="product-subtotal">
+                                <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" >{{quoteService.CalculateTempSubTotal(i) |
+                                    currency:'INR'}}</a>
+                            </td>
+                            <td>
+                                <!-- <i class='bx bx-edit'></i> -->
+                                <!-- <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" (click)="deleteProduct(i)"><i class='bx bx-trash'></i></a> -->
+                                <button (click)="deleteProduct(i)">X</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </ng-container>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+        <div class="cart-totals">
+            <h3>Quote Totals</h3>
+            <ul>
+                <li>Total <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+            </ul>
+            <!-- <a routerLink="/checkout" class="default-btn"><i class='bx bx-shopping-bag icon-arrow before'></i><span class="label">Proceed to Checkout</span><i class="bx bx-shopping-bag icon-arrow after"></i></a> -->
+        </div>
+        <button (click)="save1()">Save</button>

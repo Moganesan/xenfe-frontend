@@ -1,0 +1,431 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/sass/style";
+
+// Replace above style with this SCSS file to enable dark mode styles
+//@import "./assets/sass/style.dark";
+
+html, body { height: 100%; }
+body { margin: 0; }
+
+
+
+
+
+.table_theme {
+    color: #535353;
+}
+
+
+.invoice-content {
+    font-family: 'Poppins', sans-serif;
+    color: #535353;
+    font-size: 14px;
+}
+
+.invoice-content a {
+    text-decoration: none;
+}
+
+.invoice-content .img-fluid {
+    max-width: 100% !important;
+    height: auto;
+}
+
+.invoice-content .form-control:focus {
+    box-shadow: none;
+}
+
+.invoice-content h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #535353;
+}
+
+
+
+/** Invoice 6 start **/
+.invoice-6 {
+    background: #fff;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 47px 0 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.invoice-6 .invoice-inner-6 {
+    background: #fff;
+    max-width: 1296px;
+    margin: 0 auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-6 .item-desc-1 span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #535353;
+}
+
+.invoice-6 .invoice-titel{
+    background: #25cc7e;
+}
+
+.invoice-6 .bank-transfer-list-1 li strong{
+    font-weight: 500;
+}
+
+.invoice-6 .fw-bold {
+    font-weight: 500!important;
+}
+
+.invoice-6 .item-desc-1 small {
+    font-size: 13px;
+    color: #535353;
+}
+
+.invoice-6 .border-bottom {
+    border-bottom: solid 1px #dee2e6 !important;
+}
+
+.invoice-6 .invo-addr-1 {
+    margin-bottom: 0;
+}
+
+.invoice-6 .mb-30 {
+    margin-bottom: 30px;
+}
+
+.invoice-6 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #535353;
+}
+
+.invoice-6 .invoice-top .logo img {
+    height: 25px;
+}
+
+.invoice-6 .invoice-top {
+    padding: 30px 50px;
+}
+
+.invoice-6 .invoice-top .invoice {
+    float: right;
+}
+
+.invoice-6 .invoice-top .invoice h1 {
+    font-weight: 500;
+    margin-bottom: 0;
+    font-size: 28px;
+}
+
+.invoice-6 .invoice-info {
+    padding: 30px 50px 20px;
+}
+
+.invoice-6 .invoice-info p {
+    margin-bottom: 0;
+}
+
+.invoice-6 .invoice-titel h3 {
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.invoice-6 .invoice2 {
+    background: #fbf8f8;
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+    padding: 20px 20px 20px 150px;
+}
+
+.invoice-6 .date {
+    clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);
+    background: #fbf8f8;
+    padding: 20px 150px 20px 20px;
+}
+
+.invoice-6 .invoice-titel .row {
+    margin: 0;
+}
+
+.invoice-6 .order-summary {
+    padding: 30px 50px;
+}
+
+.invoice-6 .order-summary .table {
+    margin-bottom: 0;
+}
+
+.invoice-6 .table td, .invoice-6 .table th {
+    padding: 13px 20px;
+    vertical-align: top;
+    border-top: 1px solid #e9ecef;
+    border-right: 1px solid #e9ecef;
+    text-align: center;
+}
+
+.invoice-6 .table > :not(caption) > * > * {
+    box-shadow: none;
+}
+
+.invoice-6 .table tr, .invoice-6 .table tr strong {
+    font-size: 15px;
+    text-transform: initial !important;
+}
+
+
+.invoice-6 .invoice-informeshon {
+    padding: 30px 50px;
+    background: #fbf8f8;
+}
+
+
+.invoice-6 .text-muted {
+    color: #535353 !important;
+}
+
+.invoice-6 .invoice-informeshon p {
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.invoice-6 .invoice-informeshon p strong {
+    font-weight: 600;
+}
+
+.invoice-6 .invoice-footer {
+    padding: 30px 50px;
+}
+
+.invoice-6 .social-list {
+    float: left;
+}
+
+.invoice-6 .social-list span {
+    margin-right: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #171717;
+}
+
+.invoice-6 .social-list a {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    display: inline-block;
+    font-size: 17px;
+    margin: 0 2px 2px 0;
+    color: #3dd5f3;
+    background: #f1f1f1;
+    border-radius: 50%;
+}
+
+.invoice-6 .social-list a:hover {
+    background: #3dd5f3;
+    color: #fff;
+}
+
+@media screen and (max-width: 992px) {
+    .invoice-6 .invoice-top {
+        padding: 50px;
+    }
+
+
+    .invoice-6 .invoice-info {
+        padding: 50px 50px 20px;
+    }
+
+    .invoice-6 .order-summary {
+        padding: 50px;
+    }
+
+    .invoice-6 .invoice-informeshon {
+        padding: 50px;
+    }
+
+    .invoice-6 .invoice-footer {
+        padding: 50px;
+    }
+
+    .invoice-6 .invoice2 {
+        padding: 20px 20px 20px 50px;
+    }
+
+    .invoice-6 .date {
+        padding: 20px 50px 20px 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+.btn-lg {
+    font-size: 15px;
+    height: 50px;
+    padding: 0 35px;
+    line-height: 50px;
+    border-radius: 3px;
+    color: #ffffff;
+    border: none;
+    margin: 3px;
+}
+
+.btn-lg {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    text-transform: capitalize;
+    transition: all 0.3s linear;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.btn-lg:hover {
+    color: #ffffff;
+}
+
+.btn-lg:hover:after {
+    transform: perspective(200px) scaleX(1.05) rotateX(0deg) translateZ(0);
+    transition: transform 0.9s linear, transform 0.4s linear;
+}
+
+.btn-lg:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: "";
+    transform: perspective(200px) scaleX(0.1) rotateX(90deg) translateZ(-10px);
+    transform-origin: bottom center;
+    transition: transform 0.9s linear, transform 0.4s linear;
+    z-index: -1;
+}
+
+.btn-check:focus+.btn, .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-download {
+    background: #25cc7e!important;
+}
+
+.btn-download:after {
+    background: #1eb770;
+}
+
+.btn-print{
+    background: #3a3939;
+}
+
+.btn-print:after {
+    background: #1d1c1c;
+}
+
+.invoice-content .f-w-600 {
+    font-weight: 600 !important;
+}
+
+.invoice-content .text-13 {
+    font-size: 13px;
+}
+
+.invoice-content .invoice-table th:first-child,
+.invoice-content .invoice-table td:first-child {
+    text-align: left;
+}
+
+.invoice-content .color-white {
+    color: #fff !important;
+}
+
+.invoice-content .inv-header-1 {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.invoice-content .inv-header-2 {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.invoice-content .inv-title-1 {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.invoice-content .invo-addr-1 {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.invoice-content .item-desc-1 {
+    text-align: left;
+}
+
+.invoice-content .item-desc-1 span {
+    display: block;
+}
+
+.invoice-content .item-desc-1 small {
+    display: block;
+}
+
+.invoice-content .important-notes-list-1 {
+    font-size: 13px !important;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+.invoice-content .important-notes-list-1 li {
+    margin-bottom: 5px;
+}
+
+.invoice-content .bank-transfer-list-1 {
+    font-size: 13px !important;
+    padding-left: 0px;
+}
+
+.invoice-content .important-notes {
+    font-size: 12px !important;
+}
+
+.invoice-content .invoice-btn-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+table th{
+    font-weight: 500;
+}
+
+@media print {
+    @page {
+      size: 330mm 427mm;
+      margin: 14mm;
+    }
+    .container {
+      width: 1170px;
+    }
+  }
+
+
+
+@page {
+    size: 21cm 29.7cm;
+    margin: 30mm 45mm 30mm 45mm;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

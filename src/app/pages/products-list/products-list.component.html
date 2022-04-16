@@ -1,0 +1,19 @@
+<a class="btn btn-sm btn-primary cursor-pointer float-right" style="float:right" href="/productCreate">+</a>
+
+<h3>All Products</h3>
+
+
+
+<div *ngFor='let q of products'>
+<a href="/productEdit/{{q.id}}">ID: {{q.id}}</a>
+<p>Name: {{q.name}}</p>
+<p>Short Description: {{q.short_desc}}</p>
+<p>Description: {{q.description}}</p>
+<p>Price: {{q.price}}</p>
+<p>Quantity: {{q.quantity}}</p>
+<p>Image: {{q.image}}</p>
+<img src="../../../assets/images/{{q.upload_image_name}}"width="150" height="100">
+<p>uploaded Image name: {{q.upload_image_name}}</p>
+</div>
+
+

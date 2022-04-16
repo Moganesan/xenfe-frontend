@@ -1,0 +1,80 @@
+<div class="card-body ">
+    <div class="row gx-9 gy-6">
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Customer</h2>
+                    <div class="container">
+                        <h4>
+                            {{customer_data?.first_name}}<br>
+                            {{customer_data?.mobile}}<br>
+                            {{customer_data?.branch}}<br>
+                            {{customer_data?.address1}}<br>
+                            {{customer_data?.address2}}<br>
+                            {{customer_data?.city}} -
+                            {{customer_data?.pincode}}<br>
+                            {{customer_data?.state}}
+                            {{customer_data?.country}}<br>
+                        </h4>
+                        <ng-template #mymodal let-modal>
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="modal-basic-title">New Customer Address</h2>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+<div class="card mb-5 mb-xl-8 p-5">
+    <div class="card-body py-3">
+      <div class="table-responsive">
+<table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+    <thead>
+        <tr class="fw-bolder text-muted">
+            <th>Check</th>
+            <th>Back Order Id</th>
+            <th>Delivery slip Id</th>
+            <th>Product</th>
+            <th>Discounted Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor=" let c of dcProductList">
+            <td><input class="form-check-input" type="checkbox" [(ngModel)]="c.check" (ngModelChange)="change()"></td>
+            <td>
+                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{c.backorder_id}}</a>
+            </td>
+            <td>
+                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{c.dc_id}}</a>
+            </td>
+            <td>
+                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{c.title}}</a>
+            </td>
+            <td>
+                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{c.price_after_discount | currency:'INR'}}</a>
+            </td>
+            <td>
+                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{c.quantity}}</a>
+            </td>
+            <td>
+                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{c.line_total | currency:'INR'}}</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+      </div>
+      </div>
+      </div>
+
+<h3>Total: {{total}}</h3>
+
+<!-- <button><a href="/backOrderToPos/{{id}}">Move to bill</a></button> -->
+
+<a href="unbilled/bill/{{id}}" class="btn btn-sm btn-primary cursor-pointer float-right" >Move to bill</a>
+
+
+</div>

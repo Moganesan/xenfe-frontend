@@ -1,0 +1,90 @@
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="card-label fw-bolder fs-3 mb-1"> Tax Invoice List</span>
+      <a class="btn btn-sm btn-primary cursor-pointer float-right" style="float:right" href="/quotationList/createQuotation">+</a>
+    </h3>
+    <div class="card-toolbar">
+    </div>
+  </div>
+  <div class="card mb-5 mb-xl-8 p-5">
+  <div class="card-body py-3">
+    <div class="table-responsive">
+      <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3" >
+        <thead>
+          <tr class="fw-bolder text-muted">
+            <th class="min-w-20px">Invoice id</th>
+            <th class="min-w-20px">Order id</th>
+            <th class="min-w-120px">Date</th>
+            <th class="min-w-120px">Customer</th>
+           <!--  <th class="min-w-140px">Branch</th> -->
+            <th class="min-w-120px">Total</th>
+            <th class="min-w-120px">Tax</th>
+            <th class="min-w-120px">Sub Total</th>
+            <th class="min-w-100px text-end">View</th>
+          </tr>
+        </thead>
+        <tbody *ngFor='let q of taxInvoice'>
+          <tr>
+            <td>
+              <a href="quotationList/viewQuotation/{{q.id}}" class="text-dark fw-bolder text-hover-primary fs-6">
+                {{q.id | number:'5.0'}}
+              </a>
+            </td>
+            <td>
+                <a href="quotationList/viewQuotation/{{q.id}}" class="text-dark fw-bolder text-hover-primary fs-6">
+                  {{q.order_id | number:'5.0'}}
+                </a>
+              </td>
+            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" >
+              {{q.updated| date : 'dd-MM-yyyy'}}
+              </a>
+            </td>
+            <td>
+                <a href="quotationList/viewQuotation/{{q.id}}" class="text-dark fw-bolder text-hover-primary fs-6">
+                  {{q.first_name}}
+                </a>
+              </td>
+            <!-- <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" >
+              {{q.first_name}} {{q.second_name}}
+              </a>
+              <span class="text-muted fw-bold text-muted d-block fs-7">
+                {{q.company_name}}
+              </span>
+            </td>
+                  <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" >
+              {{q.branch}}
+              </a>
+              <span class="text-muted fw-bold text-muted d-block fs-7" >{{q.city}}</span>
+            </td> -->
+            <td class="text-dark fw-bolder text-hover-primary fs-6">{{q.total | currency:'INR'}}</td>
+            <td class="text-dark fw-bolder text-hover-primary fs-6">{{q.total_cgst | currency:'INR'}}</td>
+            <td class="text-dark fw-bolder text-hover-primary fs-6">{{q.sub_total | currency:'INR'}}</td>
+
+
+            <td class="text-end">
+              <a href="ordersList/order/{{q.id}}"
+                class=" btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                <span class="bi bi-eye-fill" >
+              </span>
+              </a>
+              <!-- <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 ">
+                <span
+                  [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
+                  class="svg-icon svg-icon-3"></span>
+              </a>
+              <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" >
+                <span
+                  [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'" class="svg-icon svg-icon-3" ></span>
+              </a> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+

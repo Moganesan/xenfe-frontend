@@ -1,0 +1,625 @@
+<!-- <ng-container *ngIf="addressLength == 0"> -->
+<!-- <h2>Customer </h2>
+    <input type="text" name="name1" [(ngModel)]="name1" (ngModelChange)="search1()" placeholder="Type name/mob"
+      autocomplete='off'>
+      <br><br>
+    <div>
+      <select [(ngModel)]="userSelection" #mySelect>
+        <option selected value> -- select a customer -- </option>
+        <option *ngFor=" let c of cust" value="{{c.customer_id}}">
+          <p>{{c.first_name}} {{c.second_name}} {{c.mobile}}</p>
+        </option>
+      </select>
+      <br><br>
+      <button (click)='onSelect(mySelect.value)'>Confirm</button>
+    </div> -->
+<!-- </ng-container> -->
+<!-- <button (click) = "reload()">Reload</button> -->
+<div class="card-body ">
+  <div class="row gx-9 gy-6">
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-body">
+          <h2>Edit Order</h2>
+          <div class="container">
+            <h3>Customer</h3>
+            <h4>
+              {{quotationNTB?.FirstName}}<br />
+              {{quotationNTB?.mobile}}
+            </h4>
+            <a class="btn btn-sm btn-primary cursor-pointer" (click)="open(mymodal)">Add New Address</a>
+
+            <ng-template #mymodal let-modal>
+
+              <div class="modal-header">
+
+                <h2 class="modal-title" id="modal-basic-title">New Customer Address</h2>
+
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+
+                  <span aria-hidden="true"> X </span>
+
+                </button>
+
+              </div>
+
+              <div class="modal-body">
+                <app-add-customer-address-admin-side></app-add-customer-address-admin-side>
+              </div>
+
+              <div class="modal-footer">
+
+                <button type="button" class="btn btn-outline-dark"
+                  (click)="modal.close('Save click'); addAddress()">Close</button>
+
+              </div>
+
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header p-3 d-flex align-items-center">
+          <h2>Order Details</h2>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <tr>
+              <th>Quotation:</th>
+              <td>#</td>
+              <td>xxxx</td>
+            </tr>
+            <tr>
+              <th>Quotation Date :</th>
+              <td>#</td>
+              <td>xxxx</td>
+            </tr>
+            <tr>
+              <th>Delivery Slip:</th>
+              <td>#</td>
+              <td>xxxx</td>
+            </tr>
+            <tr>
+              <th>Back Order:</th>
+              <td>#</td>
+              <td>xxxx</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div>
+  <!-- <ng-container *ngIf="address != undefined" align="center">
+          <p>{{custDet?.first_name}}</p>
+        </ng-container> -->
+</div>
+
+
+
+<div class="card-body ">
+  <div class="row gx-9 gy-6">
+    <!--begin::Col-->
+    <div class="col-xl-6">
+      <!--begin::Address-->
+      <div class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6">
+        <!--begin::Details-->
+        <div class="d-flex flex-column py-2">
+          <div class="d-flex align-items-center fs-5 fw-bolder mb-5">Shipping Address
+            <!-- <span class="badge badge-light-success fs-7 ms-2">Primary</span> -->
+          </div>
+          <div class="fs-6 fw-bold text-gray-600">
+            <ng-container *ngIf="Saddress != undefined">
+              <div style=" padding-inline: 10px 10px 10px 10px"
+                style="display: inline-block;  padding-inline: 10px">
+                <ng-container *ngIf="oneAddress != true">
+                  <select class="form-select form-select-solid" data-kt-select2="true"
+                    data-placeholder="Select option" data-allow-clear="true" [(ngModel)]="userSelection" #mySelect
+                    (change)='onSelectQ(mySelect.value)'>
+                    <option *ngFor=" let c of Saddress; let i=index" value="{{i}}">
+                      <p>{{c.first_name}} {{c.second_name}} {{c.company_name}}({{c.branch}}) {{c.mobile}}</p>
+                    </option>
+                  </select>
+                </ng-container>
+              </div>
+              <br />
+            {{selectedAddress?.first_name}} {{selectedAddress?.second_name}}<br>
+            {{selectedAddress?.company_name}}<br>
+            {{selectedAddress?.address1}}<br>
+            {{selectedAddress?.address2}}<br>
+            {{selectedAddress?.city}} {{selectedAddress?.pincode}}<br>
+            {{stateName}} {{countryName}}<br />
+            {{selectedAddress?.Mobile}}<br>
+          </ng-container>
+        </div>
+      </div>
+      <!--end::Details-->
+      <!--begin::Actions-->
+      <div class="d-flex align-items-center py-2">
+        <a class="btn btn-sm btn-primary cursor-pointer">Edit</a>
+
+
+      </div>
+      <!--end::Actions-->
+    </div>
+    <!--end::Address-->
+  </div>
+  <!--end::Col-->
+  <!--begin::Col-->
+  <div class="col-xl-6">
+    <!--begin::Address-->
+    <div class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6">
+      <!--begin::Details-->
+      <div class="d-flex flex-column py-2">
+        <div class="d-flex align-items-center fs-5 fw-bolder mb-3">Billing Address</div>
+        <div class="fs-6 fw-bold text-gray-600">
+          <ng-container *ngIf="address != undefined">
+            <div style=" padding-inline: 10px 10px 10px 10px" style="display: inline-block; padding-inline: 10px">
+              <ng-container *ngIf="oneAddress != true">
+                <select class="form-select form-select-solid" data-kt-select2="true"
+                  data-placeholder="Select option" data-allow-clear="true" [(ngModel)]="SuserSelection" #mySelect1
+                  (change)='onSelectS(mySelect1.value)'>
+                  <option *ngFor=" let c of address; let id=index" value="{{id}}">
+                    <p>{{c.first_name}} {{c.second_name}} {{c.company_name}}({{c.branch}}) {{c.mobile}}</p>
+                  </option>
+                </select>
+              </ng-container>
+            </div>
+            <br />
+            {{selectedSAddress?.first_name}} {{selectedSAddress?.second_name}}<br>
+            {{selectedSAddress?.company_name}}<br>
+            {{selectedSAddress?.address1}}<br>
+            {{selectedSAddress?.address2}}<br>
+            {{selectedSAddress?.city}} {{selectedSAddress?.pincode}}<br>
+            {{BstateName}} {{BcountryName}}<br />
+            {{selectedSAddress?.mobile}}<br>
+          </ng-container>
+
+
+        </div>
+      </div>
+      <!--end::Details-->
+      <!--begin::Actions-->
+      <div class="d-flex align-items-center py-2">
+
+        <a class="btn btn-sm btn-primary cursor-pointer" data-bs-toggle="modal"
+          data-bs-target="#kt_modal_new_address">Edit</a>
+
+      </div>
+      <!--end::Actions-->
+    </div>
+    <!--end::Address-->
+  </div>
+  <!--end::Col-->
+</div>
+
+
+<div align="center">
+  <ng-container *ngIf="address != undefined">
+  </ng-container>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div align="center">
+  <ng-container *ngIf="address != undefined">
+  </ng-container>
+</div>
+
+<!-- Product table starts here -->
+
+
+<div class="card-body">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1"> Product Search</span>
+          <!-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 orders</span> -->
+        </h3>
+        <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()"
+          placeholder="Enter product to search" autocomplete='off'>
+        <ng-container *ngIf="product != undefined">
+          <div>
+            <select class="form-select form-select-solid col-xs-2" data-kt-select2="true"
+              data-placeholder="Select option" data-allow-clear="true" [(ngModel)]="productSelection" #mySelect
+              (change)='OnSelect(mySelect.value)'>
+              <option selected value> -- select a product -- </option>
+              <option *ngFor=" let p of product" value="{{p.id}}">
+                <p>{{p.name}}</p>
+              </option>
+            </select>
+          </div>
+          <p>Quantity</p>
+          <input class="form-control mb-2" [(ngModel)]="quantity" type="number">
+          <!-- <input type="text" name="price" class="form-control mb-2" placeholder="Product price" value="" /> -->
+
+          <button class="btn btn-sm btn-primary cursor-pointer" [disabled]="editEnabled"
+            (click)="addFunction()">Add</button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="card mb-5 mb-xl-8 p-5">
+  <!--begin::Header-->
+  <div class="card-header border-0 pt-5">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="card-label fw-bolder fs-3 mb-1">Order Table</span>
+      <!-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 orders</span> -->
+    </h3>
+    <div class="card-toolbar">
+      <!--begin::Menu-->
+      <div class="d-flex align-items-center fs-5 fw-bolder mb-5">
+        (Excl tax) <input class="form-check-input" type="checkbox" [(ngModel)]="isChecked"
+          (change)="checkBoxOnSelect()"></div>
+      <!--end::Menu-->
+    </div>
+  </div>
+
+
+  <div class="card-body py-3">
+    <div class="table-responsive">
+      <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+        <thead>
+          <tr class="fw-bolder text-muted">
+            <th class="min-w-150px">Product</th>
+            <th>Unit Price</th>
+            <th>Discount</th>
+            <th>Discounted Price</th>
+            <th>Quantity</th>
+            <th>Line Total</th>
+            <th class="min-w-50px text-end">Action</th>
+            <!-- <ng-container *ngIf="isChecked != true">
+                    <ng-container *ngIf="isIgst != true">
+                      <th scope="col">CGST</th>
+                      <th scope="col">SGST</th>
+                    </ng-container>
+                    <ng-container *ngIf="isIgst == true">
+                      <th scope="col">IGST</th>
+                    </ng-container>
+                  </ng-container> -->
+            <!-- <th scope="col">change</th> -->
+          </tr>
+        </thead>
+        <ng-container *ngIf="quoteTempData.data[0].numInQuote !== 0">
+          <!-- tax rate....   CGST.... SGST.....IGST.....(With quantity) -->
+          <tbody>
+            <tr *ngFor="let q of quoteTempData.data; let i=index">
+              <td>
+                <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{q.product.name}}</a>
+                <span class="text-muted fw-bold text-muted d-block fs-7">SKU: UD</span>
+              </td>
+              <ng-container *ngIf="isChecked != true">
+                <td class="product-price">
+                  <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Incl Tax:
+                    {{q.priceInclTax | currency:'INR'}}</a>
+                  <span class="text-muted fw-bold text-muted d-block fs-7">Excl Tax: {{q.product.price |
+                    currency:'INR'}}</span>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="isChecked == true">
+                <td>
+                  <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{q.product.price |
+                    currency:'INR'}}</a>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="discGrpBoolean != true">
+                <td>
+                  <input [disabled]="q.isEdit" class="form-control" maxlength="6" size="6" [(ngModel)]="q.discount"
+                    (input)="discountOnChange(i)" (ngModelChange)="onchangeQInput(i)">
+                </td>
+              </ng-container>
+              <ng-container *ngIf="discGrpBoolean == true">
+                <td>
+                  <p> {{q.discount}}</p>
+                  <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{q.discount}}</a>
+                  <!-- <span class="text-muted fw-bold text-muted d-block fs-7">Excl Tax: {{q.lineDiscountPriceExclTax |
+                          currency:'INR'}}</span> -->
+                </td>
+              </ng-container>
+              <td>
+                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Incl Tax:
+                  {{q.lineDiscountPrice | currency:'INR'}}</a>
+                <span class="text-muted fw-bold text-muted d-block fs-7">Excl Tax: {{q.lineDiscountPriceExclTax |
+                  currency:'INR'}}</span>
+
+              </td>
+              <td class="product-quantity">
+
+                <input class="form-control" min="0" max="9999" required id="quantity" type="number"
+                  [disabled]="q.isEdit" [(ngModel)]="q.numInQuote" (input)="discountOnChange(i)" name="quantity"
+                  (ngModelChange)="onchangeQInput(i)">
+
+
+              </td>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">
+                {{q.linetotal | currency:'INR'}}
+                <span class="text-muted fw-bold text-muted d-block fs-7">
+                  <ng-container *ngIf="isChecked != true">
+                    <ng-container *ngIf="isIgst == true">
+                      IGST: {{q.igst | currency:'INR'}}
+                    </ng-container>
+                    <ng-container *ngIf="isIgst != true">
+                      CGST: {{q.cgst | currency:'INR'}}
+                      SGST: {{q.sgst | currency:'INR'}}
+                    </ng-container>
+                  </ng-container>
+                </span>
+                <!-- //quoteService.CalculateQuoteSubTotal(i) -->
+              </td>
+              <!-- <ng-container *ngIf="isChecked != true">
+                      <ng-container *ngIf="isIgst != true">
+
+                        <td>
+                          <p>{{q.cgst}}</p>
+                           {{calculateLineTax(i)}} -->
+              <!--</td>
+                        <td>
+                          <p>{{q.sgst}}</p>
+                           <p>{{calculateLineTax(i)}}</p> -->
+              <!--</td>
+                      </ng-container>
+                      <ng-container *ngIf="isIgst == true">
+                        <td>
+                          <p>{{q.igst}}</p>
+                           <p>{{calculateLineTax(i)}}</p> -->
+              <!--</td>
+                      </ng-container>
+                    </ng-container> -->
+              <!-- <td> -->
+              <!-- <i class='bx bx-edit'></i> -->
+              <!-- <a (click)="deleteProduct(i)"><i class='bx bx-trash'></i></a> -->
+              <!-- <button (click)="deleteProduct(i)">X</button>
+                    </td> -->
+              <!-- EEEEEEEEEEEEEE -->
+
+              <td>
+                <ng-container *ngIf="q.isEdit != false">
+                  <button class="btn btn-primary btn-sm" [disabled]="q.editSelect" (click)="edit(i)">Edit</button>
+                </ng-container>
+
+                <ng-container *ngIf="q.isEdit != true">
+                  <button class="btn btn-danger btn-sm" (click)="reloadComponent()">Cancel</button>
+                </ng-container>
+              </td>
+              <ng-container *ngIf="q.exist != true">
+                <td>
+                  <button class="btn btn-success btn-sm" (click)="SaveTDLine(i)">Save</button>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="q.exist != false">
+                <td>
+                  <button class="btn btn-success btn-sm" [disabled]="q.UpSave" (click)="UpdateQDLine(i)">Update</button>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="q.exist != false">
+                <td>
+                  <!-- <i class='bx bx-edit'></i> -->
+                  <!-- change i to q.id-->
+                  <button class="btn btn-danger btn-sm" [disabled]="q.editSelect"
+                    (click)="deleteProductfromDb(i, q.QDId)"><i class="bi bi-trash"></i></button>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="q.exist != true">
+                <td>
+                  <!-- <i class='bx bx-edit'></i> -->
+                  <!-- <a (click)="deleteProduct(i)"><i class='bx bx-trash'></i></a> -->
+                  <button class="btn btn-danger btn-sm" (click)="deleteProduct(i)"><i class="bi bi-x-lg"></i></button>
+                </td>
+              </ng-container>
+
+              <!-- EEEEEEEEEEEEEE -->
+
+            </tr>
+
+          </tbody>
+        </ng-container>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <ng-container *ngIf="quoteTempData.data[0].numInQuote !== 0">
+            <div class="cart-totals">
+              <h3>Order Summary</h3>
+              <ul> -->
+<!-- <li>Sub Total <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+            <li>Discount <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+            <li>Sub Total after Discount <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+
+            <li>GST Tax <span>{{quoteTempTotal | currency:'INR'}}</span></li> -->
+<!-- <li>Sub Total: under construction </li> -->
+<!-- <p>Sub Total(Without tax): {{subtotalWithoutTax}}</p>
+                <ng-container *ngIf="isChecked != true">
+                  <ng-container *ngIf="isIgst == true">
+                    Total Tax(Igst) : {{totalIgst}}
+                    </ng-container>
+                    <ng-container *ngIf="isIgst == false">
+                  <p>CGST : {{totalCgst}}</p>
+                  <p>SGST : {{totalSgst}}</p>
+
+                    </ng-container>
+                </ng-container> -->
+<!-- <p>Total(Including Tax): <span>{{quoteTempTotal | currency:'INR'}}</span></p>
+              </ul>
+
+              <button routerLink="/quotationView/{{id}}" >Exit</button> -->
+<!-- <button (click)="save2()">Save</button> -->
+<!-- <a routerLink="/checkout" class="default-btn"><i class='bx bx-shopping-bag icon-arrow before'></i><span class="label">Proceed to Checkout</span><i class="bx bx-shopping-bag icon-arrow after"></i></a> -->
+<!-- </div>
+          </ng-container> -->
+
+
+
+<div class="row">
+
+  <div class="col-sm-6 p-5 float-right">
+    <div class="card ">
+      <div class="card-body">
+        <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1"> Sales Summary</span>
+        </h3>
+
+        <table class="table table-bordered">
+          <tr>
+            <th>Sales Person:</th>
+            <td>#</td>
+            <td>XXXXXX</td>
+          </tr>
+          <tr>
+            <th>Region :</th>
+            <td>#</td>
+            <td>XXXXXX</td>
+          </tr>
+          <tr>
+            <th>Affiliate:</th>
+            <td>#</td>
+            <td>XXXXXX</td>
+          </tr>
+          <tr>
+            <th>Affiliate %:</th>
+            <td>#</td>
+            <td>XXXXXX</td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <ng-container *ngIf="quoteTempData.data[0].numInQuote !== 0">
+    <div class="col-sm-6 p-5">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bolder fs-3 mb-1"> Order Summary</span>
+            <!-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 orders</span> -->
+          </h3>
+          <!-- <li>Sub Total <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+                    <li>Discount <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+                    <li>Sub Total after Discount <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+        
+                    <li>GST Tax <span>{{quoteTempTotal | currency:'INR'}}</span></li> -->
+          <!-- <li>Sub Total: under construction </li> -->
+
+
+          <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+
+            <ng-container *ngIf="isChecked != true">
+
+              <tr>
+                <th>Sub Total(Without tax):</th>
+                <td>{{subtotalWithoutTax | currency:'INR'}}</td>
+              </tr>
+
+            </ng-container>
+
+            <ng-container *ngIf="isChecked != true">
+              <ng-container *ngIf="isIgst == true">
+
+                <tr>
+                  <th>IGST :</th>
+                  <td>{{totalIgst | currency:'INR'}}</td>
+                </tr>
+              </ng-container>
+
+              <ng-container *ngIf="isIgst == false">
+                <tr>
+                  <th>CGST :</th>
+                  <td>{{totalCgst | currency:'INR'}}</td>
+                </tr>
+                <tr>
+                  <th>SGST :</th>
+                  <td>{{totalSgst | currency:'INR'}}</td>
+                </tr>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="isChecked == true">
+              <tr>
+                <th>Sub Total:</th>
+                <td>{{totalWithoutDiscount | currency:'INR'}}</td>
+              </tr>
+              <tr>
+                <th>
+                  Discount:
+                </th>
+                <td>
+                  <input type="text" [(ngModel)]="discount" class="form-control" maxlength="6" size="6" (input)="calculateLineDiscountPrice(0)">
+                </td>
+              </tr> <br>
+            </ng-container>
+            <tr>
+              <th>Final Total:</th>
+              <td>{{quoteTempTotal | currency:'INR'}}
+
+                <ng-container *ngIf="isChecked == true">
+                  <td>{{finalTotalWOtax | currency:'INR'}}</td>
+                  </ng-container>
+
+                  <ng-container *ngIf="isChecked != true">
+                  <td>{{finalTotalWtax | currency:'INR'}}</td>
+                  </ng-container>
+
+
+
+              </td>
+            </tr>
+
+          </table>
+          <!-- <a routerLink="/checkout" class="default-btn"><i class='bx bx-shopping-bag icon-arrow before'></i><span class="label">Proceed to Checkout</span><i class="bx bx-shopping-bag icon-arrow after"></i></a> -->
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6 p-5 float-right">
+    <div class="card ">
+      <div class="card-body">
+        <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1"> Shipping</span>
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 p-5 float-right">
+    <div class="card ">
+      <div class="card-body">
+        <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1"> Payment</span>
+        </h3>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<a routerLink="/quotationView/{{id}}" class="btn btn-sm btn-primary cursor-pointer">Exit</a>

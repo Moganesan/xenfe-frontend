@@ -1,0 +1,138 @@
+<div class="col-sm-6">
+      <div class="card-body">
+    <h2 class="card-title align-items-start flex-column">
+      <span class="card-label fw-bolder fs-3 mb-1"> Orders To Pack</span>
+      <!-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 orders</span> -->
+    </h2>
+  </div>
+  </div>
+
+
+
+<div class="py-5">
+    <div class="card-header border-0 pt-5">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="card-label fw-bolder fs-3 mb-1 pt-5"> New Orders</span>
+    </h3>
+    <div class="card-toolbar">
+    </div>
+  </div>
+  <div class="card mb-5 mb-xl-8 p-5">
+    <div class="card-body py-3">
+      <div class="table-responsive">
+        <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+          <thead>
+            <tr class="fw-bolder text-muted">
+              <th scope="col">Order Number</th>
+              <th scope="col">Date</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Branch</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">View</th>
+              <th scope="col">Pack</th>
+            </tr>
+          </thead>
+          <tbody *ngFor='let q of ordersToPack'>
+            <tr>
+              <td>
+                <a href="/ordersToPack/{{q.id}}"
+                  class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                  {{q.id}}
+                </a>
+              </td>
+              <td>
+                <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                  {{q.updated| date : 'dd-MM-yyyy'}}
+                </a>
+              </td>
+              <td>
+                <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                  {{q.first_name}}
+                </a>
+              </td>
+              <td>
+                <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                  {{q.branch}}
+                </a>
+              </td>
+              <td>
+                <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                  {{q.balance_quantity}}
+                </a>
+              </td>
+              <td><a href="/ordersToPack/{{q.id}}" class="btn btn-sm btn-primary cursor-pointer float-right">View</a></td>
+              <td><a href="/ordersToPack/packingPage/{{q.id}}" class="btn btn-sm btn-primary cursor-pointer float-right">Pack</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="py-5">
+  <div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1 pt-5"> Short Shipped Orders</span>
+  </h3>
+  <div class="card-toolbar">
+  </div>
+</div>
+<div class="card mb-5 mb-xl-8 p-5">
+  <div class="card-body py-3">
+    <div class="table-responsive">
+      <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+        <thead>
+          <tr class="fw-bolder text-muted">
+            <th scope="col">Order Number</th>
+            <th scope="col">Date</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Branch</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">View</th>
+            <th scope="col">Pack</th>
+          </tr>
+        </thead>
+        <tbody *ngFor='let q of ordersToPackShortShipped'>
+          <tr>
+            <td>
+              <a href="/ordersToPack/{{q.id}}"
+                class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.id}}
+              </a>
+            </td>
+            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.updated| date : 'dd-MM-yyyy'}}
+              </a>
+            </td>
+            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.first_name}}
+              </a>
+            </td>
+            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.branch}}
+              </a>
+            </td>
+            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.balance_quantity}}
+              </a>
+            </td>
+            <td><a href="/ordersToPack/{{q.id}}" class="btn btn-sm btn-primary cursor-pointer float-right">View</a></td>
+            <td><a href="/ordersToPack/packingPage/{{q.id}}" class="btn btn-sm btn-primary cursor-pointer float-right">Pack</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

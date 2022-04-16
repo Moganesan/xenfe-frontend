@@ -1,0 +1,347 @@
+<!-- <ng-container *ngIf="addressLength == 0"> -->
+    <p><a (click)="open(mymodal)"><button>click to add new customer</button></a></p>
+    <hr>
+      <h2>Existing Customer </h2>
+  
+      <ng-template #mymodal let-modal>
+  
+        <div class="modal-header">
+  
+          <h4 class="modal-title" id="modal-basic-title">Add New Customer</h4>
+  
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+  
+            <span aria-hidden="true">×</span>
+  
+          </button>
+  
+        </div>
+  
+        <!-- <div class="modal-body">
+          <app-add-customer-as></app-add-customer-as>
+        </div> -->
+  
+        <div class="modal-footer">
+  
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  
+        </div>
+  
+      </ng-template>
+  
+      <input type="text" name="name1" [(ngModel)]="name1" (ngModelChange)="search1()" placeholder="Type name/mob"
+        autocomplete='off'><br><br>
+      <div>
+        <select [(ngModel)]="userSelection" #mySelect>
+          <option selected value> -- select a customer -- </option>
+          <option *ngFor=" let c of cust" value="{{c.customer_id}}">
+            <p>{{c.first_name}} {{c.second_name}} {{c.mobile}}</p>
+          </option>
+        </select>
+        <br><br>
+        <button (click)='onSelect(mySelect.value)'>Confirm</button>
+      </div>
+      <hr>
+  
+      <!-- </ng-container> -->
+      <ng-container *ngIf="display == true">
+  
+        <div align="center">
+          <ng-container *ngIf="address != undefined" align="center">
+            <p>{{custDet?.first_name}}</p>
+            <button (click)="open(mymodal)">Add new Address</button>
+  
+            <ng-template #mymodal let-modal>
+  
+              <div class="modal-header">
+  
+                <h4 class="modal-title" id="modal-basic-title">New Customer Address</h4>
+  
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+  
+                  <span aria-hidden="true"> X </span>
+  
+                </button>
+  
+              </div>
+  
+              <!-- <div class="modal-body">
+                <app-add-customer-address-admin-side></app-add-customer-address-admin-side>
+              </div> -->
+  
+              <div class="modal-footer">
+  
+                <button type="button" class="btn btn-outline-dark" (ngModelChange)="addAddress()" (click)="modal.close('Save click')">Ok</button>
+  
+              </div>
+  
+            </ng-template>
+          </ng-container>
+        </div>
+        <div align="center" style="display: flex; flex-grow: grow">
+          <div style="display: inline-block">
+            <ng-container *ngIf="Saddress != undefined">
+              <h3>Shipping Address</h3>
+              <div style=" padding-inline: 10px 10px 10px 10px" style="display: inline-block;  padding-inline: 10px">
+                <select [(ngModel)]="userSelection" #mySelect (change)='onSelectQ(mySelect.value)'>
+                  <option *ngFor=" let c of Saddress; let i=index" value="{{i}}">
+                    <p>{{c.first_name}} {{c.second_name}} {{c.company_name}}({{c.branch}}) {{c.mobile}}</p>
+                  </option>
+                </select>
+  
+              </div>
+              <p>{{selectedAddress?.first_name}} {{selectedAddress?.second_name}}</p>
+              <p>{{selectedAddress?.company_name}}</p>
+              <p>{{selectedAddress?.mobile}}</p>
+              <P>{{selectedAddress?.address1}}</P>
+              <P>{{selectedAddress?.address2}}</P>
+              <p>{{selectedAddress?.city}} {{selectedAddress?.pincode}}</p>
+              <p>{{selectedAddress?.State}} {{selectedAddress?.country}}</p>
+  
+            </ng-container>
+          </div>
+          <div>
+            <ng-container *ngIf="address != undefined">
+              <h3>Billing Address</h3>
+              <div style=" padding-inline: 10px 10px 10px 10px" style="display: inline-block; padding-inline: 10px">
+                <select [(ngModel)]="SuserSelection" #mySelect1 (change)='onSelectS(mySelect1.value)'>
+                  <option *ngFor=" let c of address; let id=index" value="{{id}}">
+                    <p>{{c.first_name}} {{c.second_name}} {{c.company_name}}({{c.branch}}) {{c.mobile}}</p>
+                  </option>
+                </select>
+              </div>
+              <p>{{selectedSAddress?.first_name}} {{selectedSAddress?.second_name}}</p>
+              <p>{{selectedSAddress?.company_name}}</p>
+              <p>{{selectedSAddress?.mobile}}</p>
+              <P>{{selectedSAddress?.address1}}</P>
+              <P>{{selectedSAddress?.address2}}</P>
+              <p>{{selectedSAddress?.city}} {{selectedSAddress?.pincode}}</p>
+              <p>{{selectedSAddress?.State}} {{selectedSAddress?.country}}</p>
+  
+            </ng-container>
+          </div>
+          <br><br>
+        </div>
+        <div align="center">
+          <ng-container *ngIf="address != undefined">
+          </ng-container>
+        </div>
+  
+  
+        <hr>
+  
+        <!-- Product table starts here -->
+  
+  
+  
+  
+        <h3>Search Field</h3>
+        <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" placeholder="Enter product to search"
+          autocomplete='off'>
+  
+  
+  
+        <ng-container *ngIf="product != undefined">
+          <p>Display Field</p>
+          <div>
+            <select [(ngModel)]="productSelection" #mySelect (change)='OnSelect(mySelect.value)'>
+              <option selected value> -- select a product -- </option>
+              <option *ngFor=" let p of product" value="{{p.id}}">
+                <p>{{p.name}}</p>
+              </option>
+            </select>
+          </div>
+          <p>Quantity</p>
+          <input [(ngModel)]="quantity" type="number">
+          <p>Add Button</p>
+          <button (click)="addFunction()">Add</button>
+        </ng-container>
+  
+        <!-- Ends Here -->
+  
+  
+  
+  
+        <div class="cart-area ptb-100">
+          <div class="container">
+            <div class="cart-table table-responsive">
+              <p> Calculate discount on price (Excl tax) <input type="checkbox" [(ngModel)]="isChecked"
+                  (change)="checkBoxOnSelect()"></p>
+  
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">SKU</th>
+                    <th scope="col">Product</th>
+                    <ng-container *ngIf="isChecked != true">
+                      <th scope="col">tax rate %</th>
+                      <th scope="col">Unit Price(Incl Tax)</th>
+                    </ng-container>
+                    <th scope="col">Unit Price(Excl Tax)</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Price After Discount</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Line Total</th>
+                    <ng-container *ngIf="isChecked != true">
+                      <ng-container *ngIf="isIgst != true">
+                        <th scope="col">CGST</th>
+                        <th scope="col">SGST</th>
+                      </ng-container>
+                      <ng-container *ngIf="isIgst == true">
+                        <th scope="col">IGST</th>
+                      </ng-container>
+                    </ng-container>
+                    <th scope="col">Remove</th>
+                  </tr>
+                </thead>
+                <ng-container *ngIf="quoteTempData.data[0].numInQuote !== 0">
+                  <!-- tax rate....   CGST.... SGST.....IGST.....(With quantity) -->
+                  <tbody>
+                    <tr *ngFor="let q of quoteTempData.data; let i=index">
+                      <td>
+                        <a>Under Dev</a>
+                      </td>
+                      <td class="product-name">
+                        <a>{{q.product.name}}</a>
+                      </td>
+                      <ng-container *ngIf="isChecked != true">
+                        <td>
+                          <p>{{q.tax}}</p>
+                        </td>
+                        <td class="product-price">
+                          <p>{{q.priceInclTax | currency:'INR'}}</p>
+                          <!-- <span class="unit-amount">{{taxCalculationLocal(i)}}</span> -->
+                        </td>
+                      </ng-container>
+                      <td class="product-price">
+                        <span class="unit-amount">{{q.product.price | currency:'INR'}}</span>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="q.discount" (input)="discountOnChange(i)">
+                      </td>
+                      <td>
+                        <p>{{q.lineDiscountPrice | currency:'INR'}}</p>
+                        <!-- <p>{{calculateLineDiscountPrice(i)}}</p> -->
+                      </td>
+                      <td class="product-quantity">
+                        <form>
+                          <div class="input-counter">
+                            <!-- <input type="number" id="number" [value]="q.numInQuote" readonly [max]="q.product.quantity" /> -->
+                            <!-- <p>{{q.numInQuote}}</p> -->
+                            <input min="0" required id="quantity" type="number" [(ngModel)]="q.numInQuote"
+                              (input)="discountOnChange(i)" name="quantity">
+                          </div>
+                        </form>
+                      </td>
+                      <td class="product-subtotal">
+                        <span class="subtotal-amount">{{q.linetotal | currency:'INR'}}</span>
+                        <!-- //quoteService.CalculateQuoteSubTotal(i) -->
+                      </td>
+                      <ng-container *ngIf="isChecked != true">
+                        <ng-container *ngIf="isIgst != true">
+  
+                          <td>
+                            <p>{{q.cgst | currency:'INR'}}</p>
+                            <!-- {{calculateLineTax(i)}} -->
+                          </td>
+                          <td>
+                            <p>{{q.sgst | currency:'INR'}}</p>
+                            <!-- <p>{{calculateLineTax(i)}}</p> -->
+                          </td>
+                        </ng-container>
+                        <ng-container *ngIf="isIgst == true">
+                          <td>
+                            <p>{{q.igst | currency:'INR'}}</p>
+                            <!-- <p>{{calculateLineTax(i)}}</p> -->
+                          </td>
+                        </ng-container>
+                      </ng-container>
+                      <td>
+                        <!-- <i class='bx bx-edit'></i> -->
+                        <!-- <a (click)="deleteProduct(i)"><i class='bx bx-trash'></i></a> -->
+                        <button (click)="deleteProduct(i)">X</button>
+                      </td>
+                    </tr>
+  
+                  </tbody>
+                </ng-container>
+  
+              </table>
+  
+            </div>
+            <ng-container *ngIf="quoteTempData.data[0].numInQuote !== 0">
+              <div class="cart-totals">
+                <h3>Quote Summary</h3>
+                <ul>
+                  <!-- <li>Sub Total <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+              <li>Discount <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+              <li>Sub Total after Discount <span>{{quoteTempTotal | currency:'INR'}}</span></li>
+  
+              <li>GST Tax <span>{{quoteTempTotal | currency:'INR'}}</span></li> -->
+                  <!-- <li>Sub Total: under construction </li> -->
+                  <p>Sub Total(Without tax): {{subtotalWithoutTax | currency:'INR'}}</p>
+                  <ng-container *ngIf="isChecked != true">
+                    <ng-container *ngIf="isIgst == true">
+                      Total Tax(Igst) : {{totalIgst | currency:'INR'}}
+                      </ng-container>
+                      <ng-container *ngIf="isIgst == false">
+                    <p>CGST : {{totalCgst | currency:'INR'}}</p>
+                    <p>SGST : {{totalSgst | currency:'INR'}}</p>
+  
+                      </ng-container>
+                  </ng-container>
+                  <p>Final Total: <span>{{quoteTempTotal | currency:'INR'}}</span></p>
+                </ul>
+                <!-- <a routerLink="/checkout" class="default-btn"><i class='bx bx-shopping-bag icon-arrow before'></i><span class="label">Proceed to Checkout</span><i class="bx bx-shopping-bag icon-arrow after"></i></a> -->
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+  
+  
+      <!-- <p>{{SummaryValue}}, {{summaryTaxDiv[0]}}, line tax {{quoteTempData.data[0].igst}}, </p> -->
+      <ng-container *ngIf="quoteTempData.data[0].numInQuote !== 0">
+  
+      <p>Tax Summary</p>
+      <!-- <p>Test: {{quoteTempData}}  {{this.quoteTempData.data}} {{this.quoteTempData.data[0].cgst_rate}}</p> -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>tax id</th>
+            <th>tax rate</th>
+            <th>Sub Total(Excl Tax)</th>
+            <ng-container *ngIf="isIgst == false">
+            <th>CGST</th>
+            <th>SGST</th>
+            </ng-container>
+            <ng-container *ngIf="isIgst == true">
+            <th>IGST</th>
+            </ng-container>
+  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor=" let c of taxSummSore">
+            <td>{{c.uniqId}}</td>
+            <td>GST {{c.uniq}}%</td>
+            <td>{{c.subTotal | currency:'INR'}}</td>
+            <ng-container *ngIf="isIgst == false">
+            <td>{{c.cgst | currency:'INR'}}</td>
+            <td>{{c.sgst | currency:'INR'}}</td>
+            </ng-container>
+            <ng-container *ngIf="isIgst == true">
+            <td>{{c.igst | currency:'INR'}}</td>
+            </ng-container>
+  
+            <!-- <td>{{summaryTaxDiv}}</td> -->
+          </tr>
+        </tbody>
+      </table>
+  
+  
+      <button (click)="save2()">Save</button>
+      </ng-container>
+  
+  
+

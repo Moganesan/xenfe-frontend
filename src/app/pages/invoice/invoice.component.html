@@ -1,0 +1,306 @@
+    <div class="invoice-6 invoice-content" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- <div class="invoice-inner-6" id="parentdiv"> -->
+                      <div class="invoice-inner-6" id="contentToConvert">
+
+                        <div class="invoice-top">
+                            <div class="row">
+                                    <div class="logo col">
+                                        <img class="logo" src="assets/img/logo.png" alt="logo">
+                                    </div>
+                                    <div class="invoice col">
+                                        <h1>Invoice</h1>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="invoice-titel">
+                            <div class="row">
+                                <div class="invoice2 col">
+                                    <h3>invoice# <span>24578924</span></h3>
+                                </div>
+                                <div class="date text-end col">
+                                    <h3>invoice Date <span>12/09/21</span></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-info border-bottom">
+                            <div class="row">
+                                <div class=" mb-30">
+                                    <div class="invoice-number">
+                                        <h4 class="inv-title-1">Invoice To</h4>
+                                        <p class="invo-addr-1">
+                                            Theme Vessel <br/>
+                                            info@themevessel.com <br/>
+                                            21-12 Green Street, Meherpur, Bangladesh <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class=" mb-30">
+                                    <div class="invoice-number text-end">
+                                        <h4 class="inv-title-1">Bill To</h4>
+                                        <p class="invo-addr-1">
+                                            Apexo Inc  <br/>
+                                            billing@apexo.com <br/>
+                                            169 Teroghoria, Bangladesh <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" mb-30">
+                                    <h4 class="inv-title-1">Date</h4>
+                                    <p class="inv-from-1">Due Date:24/08/2021</p>
+                                </div>
+                                <div class=" text-end mb-30">
+                                    <h4 class="inv-title-1">Payment Method</h4>
+                                    <p class="inv-from-1">Credit Card</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <div class="table-responsive">
+                                <!--begin::Table-->
+                                <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+                                  <thead>
+                                    <tr class="fw-bolder text-muted">
+                                      <th class="min-w-200px" scope="col">Product</th>
+                                      <!-- <th scope="col">tax rate</th> -->
+                                      <th scope="col">Unit Price</th>
+                                      <th scope="col">Discount</th>
+                                      <th scope="col">Discounted Price</th>
+                                      <th scope="col">Quantity</th>
+                                      <th scope="col">Line Total</th>
+                                      <!-- <ng-container *ngIf="isIgst != true">
+                                              <th scope="col">CGST</th>
+                                              <th scope="col">SGST</th>
+                                              </ng-container>
+                                              <ng-container *ngIf="isIgst == true">
+                                              <th scope="col">IGST</th>
+                                              </ng-container> -->
+                                      <!-- <th scope="col">Update/Delete</th> -->
+                                    </tr>
+                                  </thead>
+                      
+                                  <tbody>
+                                    <tr *ngFor="let q of quotationDetail; let i=index">
+                                      <td class="product-name">
+                                        <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{q.title}}</a>
+                                        <span class="text-muted fw-bold text-muted d-block fs-7">SKU: UD / HSN: UD</span>
+                                      </td>
+                                      <!-- <td class="product-name">
+                                                  <a>{{q.tax_rate}}</a>
+                                              </td> -->
+                                      <td class="product-price">
+                                        <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Incl Tax:
+                                          {{q.price_after_tax | currency:'INR'}}</a>
+                                        <span class="text-muted fw-bold text-muted d-block fs-7">Excl Tax: {{q.price |
+                                          currency:'INR'}}</span>
+                                      </td>
+                                      <td class="product-price">
+                                        <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                          {{q.discount | currency:'INR'}}</a>
+                                      </td>
+                                      <td class="product-price">
+                                        <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                          Incl Tax: {{q.line_discount_price | currency:'INR'}}</a>
+                                        <span class="text-muted fw-bold text-muted d-block fs-7">Excl Tax: {{q.line_discount_price_wo_tax |
+                                          currency:'INR'}}</span>
+                                      </td>
+                                      <td class="product-quantity">
+                                        <form>
+                                          <div class="input-counter">
+                                            <!-- <input type="number" id="number" [value]="q.numInQuote" readonly [max]="q.product.quantity" /> -->
+                                            <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                              {{q.quantity}}</a>
+                                          </div>
+                                        </form>
+                                      </td>
+                                      <td class="product-subtotal">
+                      
+                                        <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                          {{q.line_total | currency:'INR'}}</a>
+                      
+                                        <ng-container *ngIf="isIgst == true">
+                                          <span class="text-muted fw-bold text-muted d-block fs-7">IGST: {{q.igst | currency:'INR'}}</span>
+                                        </ng-container>
+                      
+                                        <ng-container *ngIf="isIgst != true">
+                                          <span class="text-muted fw-bold text-muted d-block fs-7">CGST: {{q.cgst | currency:'INR'}}</span>
+                                          <span class="text-muted fw-bold text-muted d-block fs-7">SGST: {{q.sgst | currency:'INR'}}</span>
+                      
+                                        </ng-container>
+                      
+                      
+                                      </td>
+                                      <!-- <ng-container *ngIf="isIgst != true">
+                                              <td class="product-price">
+                                                  <span class="unit-amount">{{q.cgst}}</span>
+                                              </td>
+                                              <td class="product-price">
+                                                  <span class="unit-amount">{{q.sgst}}</span>
+                                              </td>
+                                              </ng-container>
+                                              <ng-container *ngIf="isIgst == true">
+                      
+                                              <td class="product-price">
+                                                  <span class="unit-amount">{{q.igst}}</span>
+                                              </td>
+                                              </ng-container> -->
+                                    </tr>
+                      
+                                  </tbody>
+                      
+                                </table>
+                              </div>
+                        </div>
+                        <div class="invoice-informeshon">
+                            <div class="row">
+                                <div>
+                                    <div class="payment-info">
+                                        <h3 class="inv-title-1">Payment Info</h3>
+                                        <ul class="bank-transfer-list-1">
+                                            <li><strong>Account Name:</strong>Syamsuddin</li>
+                                            <li><strong>Account Number:</strong>1234567890934</li>
+                                            <li><strong>Code:</strong>BARC0032UK</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="terms-and-condistions text-end">
+                                        <h3 class="inv-title-1">Terms and Condistions</h3>
+                                        <p class="mb-0">Once order done, money can't refund. Delivery might delay due to some external dependency</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div>
+                                    <h4 class="inv-title-1">Notes</h4>
+                                    <p class="text-muted">This is computer generated invoice and physical signature does not require.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invoice-btn-section clearfix d-print-none">
+
+                        <button
+printSectionId="mytodosItemsId"
+printTitle="My Angular Print Media"
+ngxPrint
+styleSheetFile="../assets/pdf.css"
+>
+Print
+</button>
+
+
+                        <a printSectionId="mytodosItemsId" styleSheetFile="assets/pdf.css"
+
+                        href="javascript:window.print()" class="btn btn-lg btn-print">
+                            <i class="fa fa-print"></i> Print Invoice
+                        </a>
+                        <a id="invoice_download_btn" class="btn btn-lg btn-download" value="Convert" (click)= "convetToPDF()">
+                            <i class="fa fa-download"></i> Download Invoice
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div>
+        <button  printSectionId="mytodosItemsId" ngxPrint >Print</button>
+        <div id="mytodosItemsId">
+          <h4 >My todos</h4>
+          <div >
+            <ul>
+              <li *ngFor="let t of mytodos">
+                <span [ngClass]="[t.isCompleted? 'itemCompleted':'itemInCompleted']">
+                {{t.item}}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+
+<!-- 
+<button
+printSectionId="mytodosItemsId"
+printTitle="My Angular Print Media"
+ngxPrint
+styleSheetFile="assets/pdf.css"
+>
+Print
+</button> -->
+
+
+
+<p>排版问题，以下只是示例，关于使用方法见<a href="https://github.com/cipchk/ngx-filesaver/blob/master/README.md" target="_blank">README.md</a>。</p>
+<h1>文本型</h1>
+<textarea [(ngModel)]="text"></textarea>
+<button type="button" (click)="onDown('txt', false)">Save Text</button>
+<button type="button" (click)="onDown('json', false)">Save JSON</button>
+
+<h1>远程文件下载</h1>
+<button type="button" (click)="onDown('txt', true)">Save Txt</button>
+<button type="button" (click)="onDown('docx', true)">Save Word</button>
+<button type="button" (click)="onDown('xlsx', true)">Save Excel</button>
+<button type="button" (click)="onDown('csv', true)">Save CSV</button>
+<button type="button" (click)="onDown('pptx', true)">Save PPT</button>
+<button type="button" (click)="onDown('pdf', true)">Save PDF</button>
+<button type="button" (click)="onDown('zip', true)">Save Zip</button>
+<button type="button" (click)="onDown('7z', true)">Save 7z</button>
+<button type="button" (click)="onDown('jpg', true)">Save JPG</button>
+<button type="button" (click)="onDown('gif', true)">Save Gif</button>
+<button type="button" (click)="onDown('png', true)">Save Png</button>
+
+
+
+<div class="container">
+    <!-- <div id="pdfTable" #pdfTable> -->
+        <div id="parentdiv1" #pdfTable>
+
+      <h2>Angular HTML To PDF Generator Example - ItSolutionStuff.com</h2>
+                
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hardik</td>
+            <td>Savani</td>
+            <td>itsolutionstuff.com</td>
+          </tr>
+          <tr>
+            <td>Vimal</td>
+            <td>Kashiyani</td>
+            <td>hdtuto.com</td>
+          </tr>
+          <tr>
+            <td>Harshad</td>
+            <td>Pathak</td>
+            <td>nicesnippets.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary" (click)="downloadAsPDF()">Export To PDF format</button>
+    <!-- dom to image -->
+    <button class="btn btn-primary" (click)="generatePDF('download')">Export To PDF</button>     
+
+    <button class="btn btn-primary" (click)="convetToPDF()">convetToPDF jpeg</button>     
+
+    <button type="button" class="btn btn-secondary btn-lg btn-block"
+    (click)="generatePDF('download')">Final Download Invoice</button>
+
+
+  </div>
+
+  

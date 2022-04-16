@@ -1,0 +1,72 @@
+<p>excel-import-test works!</p>
+
+
+<div class="container">
+    <div class="title">Excel</div>
+    <div class="sub-title">Import and Export data from Excel</div>
+    <!-- <hr>
+    <div class="tools">
+      <button (click)="exportData('contactJs')">
+        <span class="mdi mdi-file-export"> </span>
+        <small>Export</small>
+      </button>
+    </div>
+  
+    <table id="contactJs" class="table-contact">
+      <tr class="thead">
+        <th>Name</th>
+        <th>E-mail</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+  
+      <tr class="tbody" *ngFor="let contact of exportContacts; let odd = odd" [ngClass]="{'odd': odd}">
+        <td>{{contact?.name}}</td>
+        <td>{{contact?.email}}</td>
+        <td>{{contact?.phone}}</td>
+        <td>{{contact?.address}}</td>
+      </tr>
+    </table> -->
+  
+    <hr>
+
+
+  
+    <div class="tools">
+      <button>
+        <label>
+          <span class="mdi mdi-file-export"> </span>
+          <small>Import</small>
+          <input hidden type="file" (change)="onFileChange($event)" multiple="false">
+        </label>
+      </button>
+    </div>
+  
+    <table id="contactJs" class="table-contact">
+        <tr>
+          <th *ngFor="let d of data; let i=index">
+            <select #mySelect (change)='onSelect(mySelect.value, i)'>            <option selected value = 0 disabled> -- select a field -- </option>
+              <option *ngFor="let a of arr" value="{{a.id}}">{{a?.name}}</option></select>
+          </th>
+        </tr>
+      <tr class="tbody" *ngFor="let d of dataToFront; let odd = odd" [ngClass]="{'odd': odd}">
+        <td>{{d?.one}}</td>
+        <td>{{d?.two}}</td>
+        <td>{{d?.three}}</td>
+        <td>{{d?.four}}</td>
+        <td>{{d?.five}}</td>
+        <td>{{d?.six}}</td>
+        <td>{{d?.seven}}</td>
+        <td>{{d?.eight}}</td>
+        <td>{{d?.nine}}</td>
+        <td>{{d?.ten}}</td>
+
+      </tr>
+    </table>
+  
+  </div>
+
+
+  <button (click)="onSave()">Save</button>
+
+

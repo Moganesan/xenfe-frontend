@@ -1,0 +1,81 @@
+
+
+
+
+
+      <!-- <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" placeholder="Enter name to search"> -->
+   
+
+
+
+
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1"> Template List</span>
+    <a class="btn btn-sm btn-primary cursor-pointer float-right" style="float:right" href="/quotationTemplateList/quotationTemplateCreate">+</a>
+  </h3>
+  <div class="card-toolbar">
+  </div>
+</div>
+<div class="card mb-5 mb-xl-8 p-5">
+<div class="card-body py-3">
+  <div class="table-responsive">
+    <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3" >
+      <thead>
+        <tr class="fw-bolder text-muted">
+          <!-- <th class="min-w-20px">Quotation Number</th>
+          <th class="min-w-120px">Date</th>
+          <th class="min-w-120px">Customer</th>
+          <th class="min-w-140px">Branch</th>
+          <th class="min-w-120px">Total</th>
+          <th class="min-w-100px text-end">View</th> -->
+          <th (click)="sort('id')" scope="col">ID&nbsp; <i class="bx bx-sort"></i></th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Total</th>
+          <th scope="col">Created By</th>
+          <th scope="col">Date</th>
+          <th scope="col">Update</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody >
+
+
+        <tr *ngFor="let v of templates ">
+          <td class="product-name">
+              <a class="text-dark fw-bolder text-hover-primary fs-6">{{v.template_id}}</a>
+          </td>
+          <td class="product-name">
+              <a class="text-dark fw-bolder text-hover-primary fs-6" routerLink="/quotationTemplateList/quotationTemplateView/{{v.template_id}}"><a class="text-dark fw-bolder text-hover-primary fs-6" >{{v.templateName}}</a></a>
+          </td>
+          <td class="product-name">
+            <a class="text-dark fw-bolder text-hover-primary fs-6">{{v.templateDesc}}</a>
+        </td>
+          <td class="product-name">
+            <a class="text-dark fw-bolder text-hover-primary fs-6" routerLink="/single-products">{{v.total}}</a>
+        </td>
+        <td class="product-name">
+          <a class="text-dark fw-bolder text-hover-primary fs-6" routerLink="/single-products">{{v.first_name}} {{v.second_name}}</a>
+      </td>
+      <td class="product-name">
+        <a class="text-dark fw-bolder text-hover-primary fs-6" routerLink="/single-products">{{v.updated| date : 'dd-MM-yyyy'}}</a>
+    </td>
+          <td class="product-subtotal">
+              <a class="text-dark fw-bolder text-hover-primary fs-6" routerLink="/quotationTemplateList/quotationTemplateView/quotationTemplateEdit/{{v.template_id}}" >Edit</a>
+          </td>
+          <td class="product-subtotal">
+            <a class="text-dark fw-bolder text-hover-primary fs-6" (click)="deleteTemplate(v.template_id)">Delete</a>
+        </td>
+      </tr>
+
+
+
+
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+  

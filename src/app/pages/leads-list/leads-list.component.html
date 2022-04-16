@@ -1,0 +1,426 @@
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1"> Leads List</span>
+    <a class="btn btn-sm btn-primary cursor-pointer float-right" style="float:right" (click)="open(mymodal)">+</a>
+    <!-- <a class="btn btn-sm btn-primary cursor-pointer" >Add New</a> -->
+
+
+
+
+    <ng-template #mymodal let-modal>
+      <ng-container *ngIf="initialDisplay == true">
+
+
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body m-5 rounded bg-light">
+
+              <h2>Lead</h2>
+
+
+              <div class="form-floating mb-7">
+                <input type="number" class="form-control" id="floatingInput" [(ngModel)]="leadCheck.mobile"
+                  placeholder="Mobile" />
+                <label for="floatingInput">Mobile</label>
+              </div>
+
+              <a class="btn btn-sm btn-primary cursor-pointer m-5" (click)="checkLead()">Check</a>
+
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="leadAdded == true">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body m-5 rounded bg-light">
+            <h4>Lead Added successfully</h4>
+            </div>
+            </div>
+            </div>
+          </ng-container>
+
+      <ng-container *ngIf="mobileExist == true">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body m-5 rounded bg-light">
+        <h4>Mobile number already exist with a lead, click view to check existing lead</h4>
+
+        <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true"> Close </span>
+        </button> -->
+        <div class="row">
+          <div class="mb-7 col ">
+            <a class="btn btn-sm btn-primary cursor-pointer" (click)="modal.dismiss('Cross click')">Close</a>
+          </div>
+
+          <div class="mb-7 col">
+            <a class="btn btn-sm btn-primary cursor-pointer" (click)="modal.dismiss('Cross click')" href="leads/view/{{checkedId}}">View1</a>
+          </div>
+        </div>
+
+        <!-- <button>Go to view page</button> -->
+        <!-- <a href="leads/view/1">Go to view page</a> -->
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <!-- <ng-container *ngIf="mobileExist == false">
+              <h5>Fill Further details</h5>
+            </ng-container>             -->
+
+
+
+      <!-- <ng-container *ngIf="display != true">
+
+                <p>Select a customer</p>
+                <h2>Customer </h2>
+                <input type="text" name="name1" [(ngModel)]="name1" (ngModelChange)="search1()" placeholder="Type name/mob"
+                  autocomplete='off'><br><br>
+                <div>
+                  <select [(ngModel)]="userSelection" #mySelect>
+                    <option selected value> -- select a customer -- </option>
+                    <option *ngFor=" let c of cust" value="{{c.customer_id}}">
+                      <p>{{c.first_name}} {{c.second_name}} {{c.mobile}}</p>
+                    </option>
+                  </select>
+                  <br><br>
+                  <button (click)='onSelect1(mySelect.value)'>Confirm</button>
+                </div>
+                </ng-container> -->
+
+      <!-- <div class="d-flex flex-column py-2 p-5">
+                <div class="fs-6 fw-bold text-gray-600">
+                <div style=" padding-inline: 10px 10px 10px 10px" style="display: inline-block;  padding-inline: 10px">
+                <h2>Customer</h2>
+                  {{custDet[0]?.first_name}} {{custDet[0]?.second_name}} <br/>
+                  {{custDet[0]?.mobile}}<br/>
+                </div>
+                </div>
+                </div> -->
+      <br><br>
+
+      <ng-container *ngIf="leadAdded != true">
+
+
+      <ng-container *ngIf="mobileExist == false">
+
+        <ng-container *ngIf="initialDisplay != true">
+          <!-- <div class="col-sm-9">
+                    <div class="card">
+                      <div class="card-body rounded m-5 bg-light"> 
+                <h2>Customer</h2>
+                  <p>{{custDet[0]?.first_name}} {{custDet[0]?.second_name}} </p>
+                  <p>{{custDet[0]?.mobile}}</p>
+                  </div>
+                  </div>
+                  </div> -->
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body m-5 rounded bg-light">
+
+                <h2>Lead Details</h2>
+
+                <div class="form-group mb-7">
+                  <!-- <textarea rows="3" type="email" class="form-control" [(ngModel)]="data.Requirement" placeholder="Requirement"></textarea> -->
+                  <input type="email" class="form-control" [(ngModel)]="data.Enquiry" placeholder="Enquiry" />
+                </div>
+
+
+                <div class="form-group mb-7">
+                  <textarea rows="3" type="email" class="form-control" [(ngModel)]="data.Requirement" placeholder="Requirement"></textarea>
+                  <!-- <input type="email" class="form-control" [(ngModel)]="data.Requirement" placeholder="Requirement" /> -->
+                </div>
+
+
+
+                <div class="form-floating mb-7 row">
+                  <div class="form-floating col-2 d-flex align-items-center">
+                    <!-- <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.Salution" placeholder="Salution"/>
+                  <label for="floatingInput">Salution</label> -->
+                    <!-- <select #mySelect2 (change)='onSalutionSelect(mySelect2.value)'>
+                    <option value="Mr">Mr</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Mrs">Mrs</option>
+                  </select> -->
+
+                    <form>
+                      <div class="form-group">
+                        <select class="form-control" #mySelect2 (change)='onSalutionSelect(mySelect2.value)'>
+                          <option value="Mr">Mr</option>
+                          <option value="Miss">Miss</option>
+                          <option value="Mrs">Mrs</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="form-floating col-5">
+                    <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.FirstName"
+                      placeholder="First Name" />
+                    <label for="floatingInput">First Name</label>
+                  </div>
+
+
+                  <div class="form-floating col-5">
+                    <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.SecondName"
+                      placeholder="Second Name" />
+                    <label for="floatingInput">Second Name</label>
+                  </div>
+                </div>
+
+
+                <div class="row mb-7">
+
+                  <div class="form-floating col">
+                    <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.CompanyName"
+                      placeholder="Company Name" />
+                    <label for="floatingInput">Company Name</label>
+                  </div>
+
+                  <div class="form-floating col">
+                    <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.GSTIN"
+                      placeholder="GSTIN" />
+                    <label for="floatingInput">GSTIN</label>
+                  </div>
+
+
+                </div>
+
+                <div class="form-floating mb-7">
+                  <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.Branch"
+                    placeholder="Branch" />
+                  <label for="floatingInput">Branch</label>
+                </div>
+
+
+
+
+
+                <div class="form-floating mb-7">
+                  <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.AddressLine1"
+                    placeholder="Address Line 1" />
+                  <label for="floatingInput">Address Line 1</label>
+                </div>
+
+
+                <div class="form-floating mb-7">
+                  <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.AddressLine2"
+                    placeholder="Address Line 2" />
+                  <label for="floatingInput">Address Line 2</label>
+                </div>
+
+                <div class="row mb-7">
+
+
+                <div class="form-floating col">
+                  <input type="email" class="form-control" id="floatingInput" [(ngModel)]="data.City"
+                    placeholder="City" />
+                  <label for="floatingInput">City</label>
+                </div>
+
+
+                <div class="form-floating col">
+                  <input type="email" class="form-control" [(ngModel)]="data.Pincode" placeholder="Pincode" />
+                  <label for="floatingInput">Pincode</label>
+                </div>
+
+
+                </div>
+
+
+
+                <!-- <input  [(ngModel)]="data.State" placeholder="State"> -->
+                <div class="row">
+                  <div class="col">
+                <p>State</p>
+                <select class="form-select " #mySelect1 (change)='onStateSelect(mySelect1.value)'>
+                  <option value="{{s.id_state}}" *ngFor=" let s of states"
+                    [selected]="s.id_state == adminDetail?.state_id">{{s.name}}</option>
+                </select>
+              </div>
+                <br>
+                <!-- <input  [(ngModel)]="country_id" placeholder="Country"> -->
+                <div class="col">
+
+                <p>Country</p>
+
+                <select class="form-select" #mySelect (change)='onSelect(mySelect.value)'>
+                  <option value="{{v.id_country}}" *ngFor=" let v of countries"
+                    [selected]="v.id_country == adminDetail?.country_id">{{v.name}}</option>
+                </select>
+                </div>
+                </div>
+                <br>
+
+                <div class="form-floating mb-7 col">
+                  <input type="email" class="form-control" [(ngModel)]="data.WhatsApp" placeholder="WhatsApp" />
+                  <label for="floatingInput">WhatsApp</label>
+                </div>
+
+              <div class="row">
+
+                <div class="form-floating mb-7 col">
+                  <input type="email" class="form-control" [(ngModel)]="data.Landline" placeholder="Landline" />
+                  <label for="floatingInput">Landline</label>
+                </div>
+
+                <div class="form-floating mb-7 col">
+                  <input type="email" class="form-control" [(ngModel)]="data.Email" placeholder="Landline" />
+                  <label for="floatingInput">E-mail</label>
+                </div>
+
+              </div>
+
+
+
+              </div>
+            </div>
+          </div>
+
+          <br><br>
+
+
+          <a class="btn btn-sm btn-primary cursor-pointer m-5" (click)="add()">Add</a>
+        </ng-container>
+      </ng-container>
+      </ng-container>
+
+
+
+
+
+
+
+
+    </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <ng-template #mymodal let-modal>
+  
+            <div class="modal-header">
+    
+              <h2 class="modal-title" id="modal-basic-title">New Customer Address</h2>
+    
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    
+                <span aria-hidden="true"> X </span>
+    
+              </button>
+    
+            </div>
+
+        <div class="modal-body">
+          <app-add-customer-address-admin-side></app-add-customer-address-admin-side>
+        </div>
+
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-outline-dark"
+            (click)="modal.close('Save click'); add()">Close</button>
+
+        </div>
+
+      </ng-template> -->
+
+  </h3>
+  <div class="card-toolbar">
+  </div>
+</div>
+<div class="card mb-5 mb-xl-8 p-5">
+  <div class="card-body py-3">
+    <div class="table-responsive">
+      <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+        <thead>
+          <tr class="fw-bolder text-muted">
+            <th class="min-w-20px">Lead</th>
+            <!-- <th class="min-w-120px">Date</th> -->
+            <th class="min-w-120px">Customer</th>
+            <th class="min-w-140px">Branch</th>
+            <th class="min-w-140px">Mobile</th>
+            <th class="min-w-120px">Enquiry</th>
+            <th class="min-w-140px">City</th>
+            <th class="min-w-140px">State</th>
+            <th class="min-w-100px text-end">View</th>
+          </tr>
+        </thead>
+        <tbody *ngFor='let q of quote'>
+          <tr>
+            <td>
+              <a href="leads/view/{{q.id}}" class="text-dark fw-bolder text-hover-primary fs-6">
+                {{q.id | number:'5.0'}}
+              </a>
+            </td>
+            <!-- <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6" >
+              {{q.updated| date : 'dd-MM-yyyy'}}
+              </a>
+            </td> -->
+            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.first_name}}
+              </a>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.company}}
+              </a>
+              <!-- <span class="text-muted fw-bold text-muted d-block fs-7">
+                {{q.company_name}}
+              </span> -->
+            </td>
+            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.branch}}
+              </a>
+              <!-- <span class="text-muted fw-bold text-muted d-block fs-7" >city</span> -->
+            </td>
+            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.mobile}}
+              </a>
+              <!-- <span class="text-muted fw-bold text-muted d-block fs-7" >city</span> -->
+            </td>
+            <td class="text-dark fw-bolder text-hover-primary fs-6">{{q.enquiry}}</td>
+            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.city}}
+              </a>
+              <!-- <span class="text-muted fw-bold text-muted d-block fs-7" >city</span> -->
+            </td>            <td>
+              <a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                {{q.state}}
+              </a>
+              <!-- <span class="text-muted fw-bold text-muted d-block fs-7" >city</span> -->
+            </td>
+            <td class="text-end">
+              <a href="ordersList/order/{{q.id}}"
+                class=" btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                <span class="bi bi-eye-fill">
+                </span>
+              </a>
+              <!-- <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 ">
+                <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'" class="svg-icon svg-icon-3"></span>
+              </a>
+              <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                  class="svg-icon svg-icon-3"></span>
+              </a> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

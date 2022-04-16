@@ -1,0 +1,27 @@
+
+
+<input placeholder="Discount Name" [(ngModel)]="name"><br><br>
+<input placeholder="Discount value" [(ngModel)]="value"><br><br>
+
+<button (click)="save()">Save</button><br><br>
+<button>Cancel</button><br><br>
+
+<h3>List of Discount Groups</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Discount Group Name....</th>
+            <th>Discount percentage</th>
+        </tr>
+    </thead>
+    <tbody *ngFor='let q of allDiscountGroups'>
+        <tr>
+            <td>
+                {{q.discount_name}}
+            </td>
+            <td>
+                {{q.discount_value}}
+            </td>
+        </tr>
+    </tbody>
+</table>

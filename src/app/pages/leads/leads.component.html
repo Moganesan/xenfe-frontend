@@ -1,0 +1,95 @@
+<div class="card">
+<div class="card-body">
+    <div class="row">
+
+<div class="form-group col-sm-12 col-md-4 col-lg-4 p-3">
+<h3>Customer Name</h3>
+<input type="text" class="form-control"
+[(ngModel)]="data.name">
+</div>
+
+<div class="form-group col-sm-12 col-md-4 col-lg-4 p-3">
+<h3>Mobile</h3>
+<input type="number" class="form-control col-sm-12 col-md-3 col-lg-3"
+[(ngModel)]="data.mobile">
+</div>
+<br><br>
+
+<div class="form-group col-sm-12 col-md-6 col-lg-6 p-3">
+    <h3>Address 1</h3>
+<input type="text" class="form-control col-sm-12 col-md-3 col-lg-3"
+[(ngModel)]="data.address1"> 
+</div>
+
+<div class="form-group col-sm-12 col-md-6 col-lg-6 p-3"><h3>Address2</h3>
+<input type="text" class="form-control col-sm-12 col-md-3 col-lg-3"
+[(ngModel)]="data.address2">
+</div>
+
+
+<div class="form-group col-sm-12 col-md-6 col-lg-6 p-3">
+    <h3>City</h3>
+    <input type="text" class="form-control"
+    [(ngModel)]="data.city">
+</div>
+
+
+
+<div class="form-group col-sm-12 col-md-6 col-lg-6 p-3">
+    <h3>Pincode</h3>
+    <input type="number" class="form-control"
+    [(ngModel)]="data.pincode">
+</div>
+
+
+<div class="form-group col-sm-12 col-md-6 col-lg-6 p-3">
+    <h3>State</h3>
+    <select [(ngModel)]="data.state" class="form-control"
+        >
+        <option
+        value="{{s.id_state}}"
+        *ngFor=" let s of states"
+        [selected]="s.id_state == adminDetail?.state_id"
+         >{{s.name}}</option>
+    </select>
+    </div>
+
+    <div class="form-group col-sm-12 col-md-6 col-lg-6 p-3">
+        <h3>Country</h3>
+
+    <select 
+    class="form-select"
+    [(ngModel)]="data.country" >
+        <option
+        value="{{v.id_country}}"
+        *ngFor=" let v of countries"
+        [selected]="v.id_country == adminDetail?.country_id"
+        >{{v.name}}</option>
+    </select>
+    </div>
+
+
+<br><br>
+<div class="form-group col-sm-12 col-md-7 col-lg-7 p-3">
+<h3>Requirement</h3>
+<textarea [(ngModel)]="data.requirement" class="form-control"
+    ></textarea>
+</div>
+
+
+
+    <div class="form-group col-sm-12 col-md-6 col-lg-6 p-3">
+<br><br><h3>Assign to (Under development)</h3>
+<select class="form-control"
+    [(ngModel)]="data.assignTo"></select>
+    </div>
+</div>
+</div>
+</div>
+
+
+<br><br>
+
+<button class="btn btn-primary" type="reset" (click) = "add()">ADD</button>
+
+
