@@ -10,7 +10,7 @@ export const environment = {
   apiUrl: "api",
   appThemeName: "Metronic",
 
-  serverURL: "http://api.zonxo.com/api",
+  serverURL: "http://mysalonapps.in/",
 
   appPurchaseUrl: "https://1.envato.market/EA4JP",
   appHTMLIntegration:

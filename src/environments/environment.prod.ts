@@ -19,7 +19,7 @@ export const environment = {
   appPreviewChangelogUrl:
     "https://preview.keenthemes.com/metronic8/angular/docs/changelog",
 
-  serverURL: "http://api.zonxo.com/api",
+  serverURL: "http://mysalonapps.in/",
 
   domain: "http://api.zonxo.com/",
 
